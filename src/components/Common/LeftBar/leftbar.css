@@ -1,0 +1,39 @@
+.aside-container{
+ height: 90vh;
+}
+.aside-nav>ul{
+    list-style: none;
+}
+.aside-nav{
+    border-right:1px solid #e5e5e5 ; 
+}
+.aside-nav-list{
+    overflow: hidden;
+    padding: .7rem ;
+    border-bottom: 1px solid #ececec;
+    display: flex;
+    align-items: center;
+    font-size: .9rem;
+    border-left: 4px solid transparent;
+    background-color:#fafafa;
+    &:hover{
+        background-color: #fff;
+        border-left: 4px solid #50a2d9;
+    }
+    
+}
+.active-tab{
+    background-color: #fff;
+    border-left: 4px solid #50a2d9;
+}
+
+.aside-nav-icon{
+    color: #888c9b;
+    margin-right: .5rem;
+}
+.aside-nav-link{
+    color: #585858;
+    text-decoration: none;
+}
+
+

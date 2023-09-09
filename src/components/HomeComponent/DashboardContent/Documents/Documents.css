@@ -1,0 +1,22 @@
+.doc-form-container{
+    display: flex;
+    gap: 2rem;
+}
+.document-header{
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+    font-weight: 400;
+    color: #2679b5;
+}
+.documents-input{
+    padding: .2rem;
+    width: 20%;
+    margin-right: 1rem;
+}
+.document-btn{
+    background-color: #3278b3;
+    color: #fff;
+    border: none;
+    padding: .2rem;
+    border-radius: .3rem;
+}

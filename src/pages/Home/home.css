@@ -1,0 +1,18 @@
+
+.home-main{
+display: flex;
+
+
+}
+.home-container-heading{
+    border-bottom: 1px dotted #c5d0dc;
+    top: 50px;
+}
+
+/* .home-container{
+    flex-basis: 80%;
+} */
+/* .home-leftbar{
+    height: auto;
+} */
+

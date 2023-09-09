@@ -1,0 +1,67 @@
+/* .attendence-container{
+    width: 80vw;
+} */
+.attendence-container{
+    margin: 1rem;
+}
+.attendence-header{
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px dotted #e6e8ed;
+    
+}
+.attendence-header>small{
+ color: #2679b5;
+ font-size: 1.3rem;
+
+}
+.attendence-para{
+    padding: 1rem 0;
+    color: #888c9b;
+    font-size: .8rem;
+    line-height: 1.3rem;
+    font-weight: 500;
+}
+.attendence-req-btn{
+    background-color: #50a2d9;
+    border: none;
+    color: #fff;
+    border-radius: .2rem;
+    padding: .5rem;
+}
+.attendence-exp-btn{
+    background-color: #428bca;
+    border: none;
+    color: #fff;
+    border-radius: .2rem;
+    padding: .5rem;
+}
+.attendence-row-container{
+   display: flex;
+}
+.attendence-calender-header{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #F7FAFD;
+    padding: .2rem 1rem;
+}
+.attendence-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    list-style-type: none;
+    
+    padding: .5rem;
+    border-bottom: 1px solid #ecedf1;
+}
+.attendence-navigators{
+    color: #2679b5;
+    margin-bottom: .5rem;
+}
+.attendece-progress-bar{
+ accent-color: #87B87F;
+ border:none;
+}
+.progress-bar{
+    accent-color: #E6E8ED;
+    
+}

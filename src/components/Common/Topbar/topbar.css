@@ -1,0 +1,131 @@
+.header{
+    background-color: rgb(66,139,202);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 10vh;
+    position: fixed;
+    top: 0;
+}
+.header-logo{
+    width: 20%;
+    &:hover{
+        cursor: pointer;
+    }
+}
+.topbar-logo{
+    width: 5rem;
+    padding-left: 1rem;
+}
+
+.topbar-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .25rem;
+    color: #fff;
+    width: 100%;
+    position: relative;
+}
+.topbar-actualize-logo{
+    width: 4rem;
+    height: 3rem;
+ 
+}
+.search-container{
+    display: flex;
+    align-items: center;
+    padding: .25rem;
+    background-color: #5999D0;
+    border-radius: .5rem;
+    height: 2.25rem;
+
+}
+.search-icon{
+    color: #AEC9DF;
+   
+}
+.search-bar{
+    background-color: #5999D0 ;
+    border: none;
+    width: 100%;
+    height: 2.25rem;
+    
+    /* transition: background-color 0.3s;   */
+    &::placeholder{
+        color: #AEC9DF;
+        font-weight: 400;
+    }
+    &:focus{
+        border: none;
+        outline: none;
+    }
+}
+
+.search-bar.focused, .search-container.focused{
+    background-color: #fff;
+    color: #000;
+
+}
+.topbar-btn-container{
+    display: flex;
+    align-items: center;
+    width: 27%
+}
+
+.topbar-btn{
+    background-color: #7BB386;
+    border: none;
+    width: 62%;
+    /* height: 2rem; */
+    border-radius: 0.25rem;
+    color: inherit;
+    padding: 0.8em 0.5em;
+}
+.profile-topbar-container{
+    
+    &>div{
+        display: flex;
+        align-items: center;
+    }
+}
+
+.profile-topbar-details{
+    display: flex;
+    flex-direction: column;
+    font-size: .9rem;
+}
+.profile-topbar-image{
+    width: 35px ;
+    height: 35px;
+   margin-right: 0.8rem;
+}
+.topbar-btn-checkLabel{
+    font-size: .9rem;
+    padding-left: .5rem;
+    width: 13em;
+}
+
+.dropdown{
+        background-color: #fff;
+    flex-direction: column;
+    position: absolute;
+    font-weight: 400;
+    box-shadow: 0 0 0 1px rgba(20,20,31,.05), 0 2px 7px 1px rgba(20,20,31,.16);
+    text-align: center;
+    top: 100%;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0.125rem 0 0;
+    font-size: 1rem;
+    color: #393939;
+    border: 1px solid rgba(20,20,31,.15);
+    border-radius: 0.25rem;
+    z-index: 1000;
+}
+.dropdown-item:hover{
+    background-color: #6fb3e0;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;
+}

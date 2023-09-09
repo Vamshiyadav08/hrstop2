@@ -1,0 +1,46 @@
+.skills>h3{
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+    color: #2679b5;
+    border-bottom:1px dotted #e6e8ed ;
+}
+.skills-section{
+    display: flex;
+    justify-content: space-between;
+}
+input.skills-input {
+    border: none;
+    border-bottom: dashed 1px #0088cc;
+}
+.skills-star-section{
+    display: flex;
+   
+}
+.skills-cross-btn{
+   background-color: #D15B47;
+   
+}
+.skills-right-btn{
+    background-color: #2D6AA0;
+   
+}
+.skills-focused{
+    text-decoration: underline;
+}
+input[type=radio]{
+    &::placeholder{
+        color: red;
+    }
+}
+.right-btn{
+    margin-right: 20rem;
+}
+input[type=radio]{
+    display: none;
+}
+.skills-star{
+    cursor: pointer;
+}
+.skills-delete-icon{
+    color: #D15B47;
+}

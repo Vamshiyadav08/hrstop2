@@ -1,0 +1,25 @@
+.home-container{
+     background-color: #fafafa;
+     border-bottom: 1px solid #c5d0dc
+}
+.hone-nav{
+
+}
+.home-nav-list{
+    list-style-type: none;
+    border-right:1px solid #c5d0dc;
+    border-top:1px solid #c5d0dc;
+    border-left:1px solid #c5d0dc;
+    padding: .5rem; 
+    
+}
+.home-nav-list.active-tab{
+    background-color: #fff;
+    border-left:2px solid #5999D0;
+}
+
+.home-nav-link{
+    color:#888c9b;
+    text-decoration: none;
+    
+}

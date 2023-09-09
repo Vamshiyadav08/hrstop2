@@ -1,0 +1,29 @@
+.family-input-container{
+    display: flex;
+}
+.family-label{
+   flex-basis: 20%;
+   color: #393939;
+font-weight: 500;
+}
+.family-input{
+   flex-basis: 30%;
+   margin-bottom: 1rem;
+    height: 2.5rem;
+}
+.family-btn{ 
+   background-color: #3278b3;
+   width: 8rem;
+   border: none;
+   padding: .2rem;
+   border-radius: .2rem ;
+   color: #fff;
+}
+.family-reset-btn{
+    background-color: #ca2d69;
+    width: 8rem;
+    border: none;
+    padding: .2rem;
+    border-radius: .2rem ;
+    color: #fff;
+}

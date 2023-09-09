@@ -1,0 +1,56 @@
+
+.form-input{
+  flex-basis:40%;
+ 
+  
+}
+
+.form-input:hover,
+.form-input:focus
+{
+    outline: none;
+    border-color: #428bca;
+    box-shadow: 0 0 0 1px #428bca;
+    border: none;
+}
+
+
+.details-label{
+   flex-basis: 30%;
+   color: #393939;
+   font-weight: 500;
+}
+.input-container{
+     display: flex;
+     margin-bottom: 1rem;
+     height: 2.5rem;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+.star-important{
+    color: red;
+}
+.personal-details{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;   
+}
+.details-heading{
+    font-family: inherit;
+    font-weight: 400;
+    color: #2679b5;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px dotted #c5d0dc;
+}
+.details-btn{
+    width: 6rem;
+    background-color: #428bca;
+    border: none;
+    padding: .5rem;
+    border-radius: .2rem ;
+    color: #fff;
+}
