@@ -108,7 +108,7 @@ export default function Education() {
         <ul className="data-header-container">
           {
             educationFields.map((eachFeild,index)=>(
-              <li className="data-details-header" key={index}>{eachFeild.label}</li>
+              <li className="data-details-header" key={nanoid()}>{eachFeild.label}</li>
             ))
           }
         </ul>

@@ -111,7 +111,7 @@ export default function Family() {
       <div className="data-container">
         <ul className="data-header-container">
           {familyFields.map((eachFeild, index) => (
-            <li className="data-details-header" key={index}>
+            <li className="data-details-header" key={nanoid()}>
               {eachFeild.name}
             </li>
           ))}

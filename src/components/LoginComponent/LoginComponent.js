@@ -13,7 +13,6 @@ export default function LoginComponent() {
     password: "",
   });
   const navigate = useNavigate();
-  // console.log(process.env.REACT_APP_FIREBASE_API_KEY,"process")
   const handleEventChange = (event) => {
     const { name, value } = event.target;
 

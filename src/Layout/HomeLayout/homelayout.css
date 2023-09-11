@@ -1,8 +1,7 @@
 .home-layout-container{
     border-bottom: 1px dotted #c5d0dc;
     margin: 1rem;
-    height: 92vh;
-    overflow: auto;
+    
     
 }
 .home-layout-container>h3{

@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { db } from "../../../firebaseConfig";
-import { collection, getDocs } from "firebase/firestore";
+import { getDoc,getDocs,doc,collection } from "firebase/firestore";
 
 import "./topbar.css";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -22,6 +22,7 @@ export default function Topbar() {
   const [CheckIn, setCheckIn] = useState(false);
   const [showDropdown, setdropdown] = useState(false);
   const [hamburgerbtn, sethamburgerBtn] = useState(false);
+  const [data, setData] = useState({});
 
   const [theme,setthemeState] =useState(localStorage.getItem("themeVal"))
   const contextData = useContext(AttendenceContext);
@@ -34,7 +35,6 @@ export default function Topbar() {
   },[theme])
 
   const handletheme=((event)=>{
-    // console.log(event.target.checked,"top")
     contextData.themeContext(event.target.checked)
     setthemeState(event.target.checked)
   })
@@ -91,7 +91,7 @@ export default function Topbar() {
         navigate("./login", { replace: true });
       })
       .catch((error) => {
-        // An error happened.
+      console.log(error)
       });
   };
   const getData = async (searchedValue) => {
@@ -102,13 +102,30 @@ export default function Topbar() {
     });
 
     contextData.searchUserData(data, searchedValue);
+    console.log(data,"dataa")
   };
+  
 
   const handleInput = (event) => {
     if (event.key === "Enter") {
       getData(event.target.value);
     }
   };
+  useEffect(() => {
+    const getDataFromFirebase = async () => {
+      try {
+        const docRef = doc(db, "userDetails", "id1");
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          let dbData = docSnap.data();
+          setData(dbData);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getDataFromFirebase();
+  }, []);
   return (
     <header className="header">
       <div className="header-logo">
@@ -164,8 +181,8 @@ export default function Topbar() {
               src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png"
             />
             <div className="profile-topbar-details">
-              <h4>Vamshi Thotakuri</h4>
-              <span>Associate SharePointDeveloper</span>
+              <h4>{data.firstname}</h4>
+              <span>{data.role}</span>
             </div>
             <div className="arrow-icon">
               <BiSolidDownArrow

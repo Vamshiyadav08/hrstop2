@@ -6,6 +6,7 @@ import { db } from "../../../../firebaseConfig";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { AttendenceContext } from "../../../../Context";
+import { nanoid } from "nanoid";
 
 const formFields = [
   { name: "bankname", label: "Name of Bank", required: true },
@@ -33,7 +34,7 @@ export default function Bank() {
     acctype: "",
     paymentmode: "",
   });
-  const [getDatastate, setGetDataState] = useState({});
+  const [docsData, setDocsData] = useState({});
 
   const [themeval, setthemestate] = useState(localStorage.getItem("themeVal"));
   const { theme } = useContext(AttendenceContext);
@@ -72,7 +73,7 @@ export default function Bank() {
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         let dbData = docSnap.data();
-        setGetDataState(dbData);
+        setDocsData(dbData);
       }
     } catch (error) {
       console.log(error);
@@ -105,21 +106,22 @@ export default function Bank() {
           Update Details
         </button>
       </form>
-      <div className="">
-        {
-          <table className="">
-            <th className="">
-              {dataHeaders.map((eachEle,index) => (
-                <td className="" key={index}>{eachEle}</td>
-              ))}
-            </th>
-            <tr>
-              {formFields.map((field) => (
-                <td key={field.name}>{getDatastate[field.name]}</td>
-              ))}
-            </tr>
-          </table>
-        }
+      <div className="data-container">
+        <ul className="data-header-container">
+          {dataHeaders.map((eachEle) => (
+            <li className="data-details-header" key={nanoid()}>
+              {eachEle}
+            </li>
+          ))}
+        </ul>
+
+        <ul  className="data-content">
+          {formFields.map((eachItem, index) => (
+            <li className="data-details" key={index}>
+              {docsData[eachItem.name]}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

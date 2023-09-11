@@ -14,11 +14,33 @@ const personalDetailsFields = [
     type: "select",
     options: ["Mr", "Miss", "Dr"],
   },
-  { name: "firstname", label: "First Name", type: "text", required: true },
-  { name: "middlename", label: "Middle Name", type: "text" },
-  { name: "lastname", label: "Last Name", type: "text", required: true },
-  { name: "date", label: "Date of Birth", type: "date" },
-  { name: "role", label: "Role", type: "text" },
+  {
+    name: "firstname",
+    label: "First Name",
+    type: "text",
+    required: true,
+  },
+  {
+    name: "middlename",
+    label: "Middle Name",
+    type: "text",
+  },
+  {
+    name: "lastname",
+    label: "Last Name",
+    type: "text",
+    
+  },
+  {
+    name: "date",
+    label: "Date of Birth",
+    type: "date",
+  },
+  {
+    name: "role",
+    label: "Role",
+    type: "text",
+  },
   {
     name: "gender",
     label: "Gender",
@@ -46,11 +68,31 @@ const personalDetailsFields = [
 ];
 
 const contactDetailsFields = [
-  { name: "mobile", label: "Mobile", required: true },
-  { name: "workphone", label: "Work Phone" },
-  { name: "personalemail", label: "Personal Email",type:"text", required: true },
-  { name: "linkedin", label: "LinkedIn",type:"text" },
-  { name: "adress", label: "Permanent Address",type:"text" },
+  {
+    name: "mobile",
+    label: "Mobile",
+    required: true,
+  },
+  {
+    name: "workphone",
+    label: "Work Phone",
+  },
+  {
+    name: "personalemail",
+    label: "Personal Email",
+    type: "text",
+    required: true,
+  },
+  {
+    name: "linkedin",
+    label: "LinkedIn",
+    type: "text",
+  },
+  {
+    name: "adress",
+    label: "Permanent Address",
+    type: "text",
+  },
 ];
 
 export default function Details() {
@@ -70,6 +112,7 @@ export default function Details() {
     adress: "",
     role: "",
   });
+
   const [themeval, setthemestate] = useState(localStorage.getItem("themeVal"));
   const { theme } = useContext(AttendenceContext);
 
@@ -82,12 +125,16 @@ export default function Details() {
     console.log(val);
     console.log(event.target.value);
     const { name, value } = event.target;
-    setData({ ...data, [name]: value });
+    setData({
+      ...data,
+      [name]: value,
+    });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (data.name !== "" && data.personalemail !== "" && data.mobile !== "") {
+    console.log(data.firstname,data.personalemail,data.mobile)
+    if (data.firstname !== "" && data.personalemail !== "" && data.mobile !== "") {
       try {
         await setDoc(doc(db, "userDetails", "id1"), data);
         console.log("Added");
@@ -126,9 +173,9 @@ export default function Details() {
         >
           {eachFeild.options.map((option) => (
             <option value={option} key={option}>
-              {option}
+              {option}{" "}
             </option>
-          ))}
+          ))}{" "}
         </select>
       );
     } else if (eachFeild.type === "textarea") {
@@ -146,14 +193,17 @@ export default function Details() {
       return (
         <div className="form-input">
           <PhoneInput
-            inputProps={{
-              name: eachFeild.name,
-            }}
+            inputProps={{ name: eachFeild.name }}
             country={"us"}
             name={eachFeild.name}
             value={data[eachFeild.name]}
             onChange={(value) =>
-              handleChangeEvent({ target: { name: eachFeild.name, value } })
+              handleChangeEvent({
+                target: {
+                  name: eachFeild.name,
+                  value,
+                },
+              })
             }
           />
         </div>
@@ -169,8 +219,8 @@ export default function Details() {
           value={data?.[eachFeild.name]}
         />
       );
-    }else if(eachFeild.type==="date"){
-      return(
+    } else if (eachFeild.type === "date") {
+      return (
         <input
           name={eachFeild.name}
           id={eachFeild.name}
@@ -179,8 +229,7 @@ export default function Details() {
           className="form-input"
           value={data?.[eachFeild.name]}
         />
-      )
-
+      );
     }
   };
 
@@ -200,11 +249,11 @@ export default function Details() {
                 {eachFeild.label}
                 {eachFeild.required && (
                   <span className="star-important">*</span>
-                )}
+                )}{" "}
               </label>
-              {renderInputFeild(eachFeild)}
+              {renderInputFeild(eachFeild)}{" "}
             </div>
-          ))}
+          ))}{" "}
         </div>
         <div className="contact-details">
           <h4 className="details-heading">Contact Details</h4>
@@ -216,16 +265,19 @@ export default function Details() {
                 }`}
               >
                 {eachFeild.label}
+                {eachFeild.required && (
+                  <span className="star-important">*</span>
+                )}{" "}
               </label>
-              {renderInputFeild(eachFeild)}
+              {renderInputFeild(eachFeild)}{" "}
             </div>
-          ))}
+          ))}{" "}
         </div>
         {data.length < 1 ? (
           <button className="details-btn">Save</button>
         ) : (
           <button className="details-btn">Update</button>
-        )}
+        )}{" "}
       </form>
     </div>
   );

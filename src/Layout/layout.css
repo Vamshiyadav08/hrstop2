@@ -13,4 +13,6 @@
 }
 .layout-outlet{
     width: 80vw;
+    height: 100%;
+    overflow: auto;
 }
