@@ -12,7 +12,7 @@ export default function LoginComponent() {
     email: "",
     password: "",
   });
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const handleEventChange = (event) => {
     const { name, value } = event.target;
 
@@ -21,15 +21,16 @@ export default function LoginComponent() {
       [name]: value,
     });
   };
+  // console.log(formdata)
   const handleSubmit = async (event) => {
     event.preventDefault();
     await signInWithEmailAndPassword(auth, formData.email, formData.password)
       .then(() => {
         // Signed in
-        toast.success("You are succesfully signed in");
+        toast.success("You are successfully signed in");
         console.log("User signed in it");
 
-        navigate("/");
+        // navigate("/");
       })
       .catch((error) => {
         toast.error("Enter valid credentials");
@@ -47,14 +48,14 @@ export default function LoginComponent() {
         <h5>Actualize Consulting Engineers (India) Pvt Ltd</h5>
       </header>
       <main className="auth-container">
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form className="login-form" onSubmit={handleSubmit} data-testid="login-form">
           <input
             type="text"
             className="login-input"
             placeholder="Email id"
             name="email"
             onChange={handleEventChange}
-            value={formData.value}
+            value={formData.email}
           />
           <input
             type="password"
@@ -62,7 +63,7 @@ export default function LoginComponent() {
             placeholder="Password"
             name="password"
             onChange={handleEventChange}
-            value={formData.value}
+            value={formData.password}
           ></input>
           <button>Sign In</button>
         </form>
