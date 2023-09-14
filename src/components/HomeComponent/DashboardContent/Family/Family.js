@@ -26,13 +26,7 @@ export default function Family() {
   });
   const [docsData, setDocsData] = useState([]);
 
-  // const [themeval, setthemestate] = useState(localStorage.getItem("themeVal"));
-  // const { theme } = useContext(AttendenceContext);
-
-  // useEffect(() => {
-  //   let themee = localStorage.getItem("themeVal");
-  //   setthemestate(themee);
-  // }, [theme]);
+ 
 
   const handleInput = (event) => {
     console.log(event.target);

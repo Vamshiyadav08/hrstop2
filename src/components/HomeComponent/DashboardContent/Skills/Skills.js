@@ -22,9 +22,7 @@ export default function Skills() {
 
   const handleDelete = (uniqueid) => {
     // console.log(uniqueid)
-    if (dataArray.length === 1) {
-      return;
-    } else {
+    if (dataArray.length > 1) {      
       let updatedArr = dataArray.filter((eachele) => {
         return eachele.id !== uniqueid;
       });
@@ -33,14 +31,12 @@ export default function Skills() {
   };
   function saveInput(index) {
     const updatedArr = [...dataArray];
-    if (updatedArr.length - 1 === index) {
-      updatedArr[index].text = inputstate;
-      updatedArr.push({ id: nanoid(), text: "", rating: 0 });
-      setdataArray(updatedArr);
-    } else {
-      updatedArr[index].text = inputstate;
-      setdataArray(updatedArr);
-    }
+    updatedArr[index].text = inputstate;    
+    if(updatedArr.length - 1 === index)
+     updatedArr.push({ id: nanoid(), text: "", rating: 0 })
+    setdataArray(updatedArr);
+
+    
   }
   const handleStar = (index, starIndex) => {
     console.log(index, starIndex);

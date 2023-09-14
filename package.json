@@ -16,6 +16,7 @@
     "react-big-calendar": "^1.8.2",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
+    "react-organizational-chart": "^2.2.1",
     "react-orgchart": "^1.0.5",
     "react-phone-input-2": "^2.15.1",
     "react-router-dom": "^6.15.0",
