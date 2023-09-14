@@ -1,9 +1,6 @@
 .home-container{
-     background-color: #fafafa;
+     background-color: var(--sidebar-bg-clr);
      border-bottom: 1px solid #c5d0dc
-}
-.hone-nav{
-
 }
 .home-nav-list{
     list-style-type: none;
@@ -14,12 +11,12 @@
     
 }
 .home-nav-list.active-tab{
-    background-color: #fff;
+    background-color: var(--nav-bg-clr);
     border-left:2px solid #5999D0;
 }
 
 .home-nav-link{
-    color:#888c9b;
+    color:var(--nav-text-clr);
     text-decoration: none;
     
 }

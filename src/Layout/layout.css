@@ -2,6 +2,8 @@
     display: flex;
     margin-top: 10vh;
     height: 90vh;
+    background-color: var(--bg-clr);
+   
 }
 .layout-section{
     width: 20vw;

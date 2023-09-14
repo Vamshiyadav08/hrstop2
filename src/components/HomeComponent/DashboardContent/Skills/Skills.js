@@ -22,9 +22,9 @@ export default function Skills() {
 
   const handleDelete = (uniqueid) => {
     // console.log(uniqueid)
-    if(dataArray.length===1){
-      return
-    }else{
+    if (dataArray.length === 1) {
+      return;
+    } else {
       let updatedArr = dataArray.filter((eachele) => {
         return eachele.id !== uniqueid;
       });

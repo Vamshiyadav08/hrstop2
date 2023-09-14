@@ -12,7 +12,7 @@ export default function LoginComponent() {
     email: "",
     password: "",
   });
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const handleEventChange = (event) => {
     const { name, value } = event.target;
 
@@ -30,7 +30,7 @@ export default function LoginComponent() {
         toast.success("You are successfully signed in");
         console.log("User signed in it");
 
-        // navigate("/");
+          navigate("/");
       })
       .catch((error) => {
         toast.error("Enter valid credentials");

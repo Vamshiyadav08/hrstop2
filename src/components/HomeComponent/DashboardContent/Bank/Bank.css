@@ -3,7 +3,7 @@
 }
 .bank-label{
     flex-basis: 20%;
-    color: #393939;
+    color: var(--label-clr);
     font-weight: 500;
 }
 .bank-input{

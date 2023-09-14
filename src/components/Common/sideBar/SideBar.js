@@ -13,7 +13,7 @@ import { SlCalender } from "react-icons/sl";
 import { BiHistory, BiEdit } from "react-icons/bi";
 import { AttendenceContext } from "../../../Context";
 import "../Topbar/topbar.css";
-import "./leftbar.css";
+import "./sidebar.css";
 
 const navItems = [
   { id: "dashboard", label: "DashBoard", icon: <AiFillDashboard /> },
@@ -34,7 +34,7 @@ const navItems = [
   { id: "admin", label: "Admin", icon: <BiHistory /> },
 ];
 
-export default function Leftbar() {
+export default function SideBar() {
   const [activeTab, setActiveTab] = useState(null);
 
   const [themeval, setthemestate] = useState(localStorage.getItem("themeVal"));
@@ -53,17 +53,17 @@ export default function Leftbar() {
 
   return (
     <aside
-      className={`${themeval === "true" ? "dark-theme" : "aside-container"} ${
-        hamburgerData ? "aside-container-active" : "aside-container-hide"
+      className={` "sidebar-container" ${
+        hamburgerData ? "sidebar-container-active" : "sidebar-container-hide"
       }`}
     >
-      <nav className="aside-nav">
+      <nav className="sidebar-nav">
         <ul>
           {navItems.map((eachItem) => (
             <li
               key={eachItem.id}
-              className={`${themeval === "true" ? "dark-theme-nav":"aside-nav-list"} ${
-                activeTab === eachItem.id ? "active-tab" : ""
+              className={`${"sidebar-nav-list"} ${
+                activeTab === eachItem.id ? "sidebar-active-tab" : ""
               }`}
             >
               <Link
@@ -74,10 +74,10 @@ export default function Leftbar() {
                     ? "home/profile"
                     : eachItem.id
                 }
-                className="aside-nav-link"
+                className="sidebar-nav-link"
                 onClick={() => handleBtn(eachItem.id)}
               >
-                <span className="aside-nav-icon">{eachItem.icon}</span>
+                <span className="sidebar-nav-icon">{eachItem.icon}</span>
                 {eachItem.label}
               </Link>
             </li>

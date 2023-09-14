@@ -36,7 +36,7 @@ export default function Documents() {
       console.error("Error uploading document:", error);
     }
   };
-  
+  useEffect(() => {
     const getData = async () => {
       const querySnapshot = await getDocs(collection(db, "documents"));
       let data = [];
@@ -46,7 +46,7 @@ export default function Documents() {
       });
     };
     getData();
- 
+  }, []);
 
   return (
     <div className="document-container">

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Outlet,useNavigate} from "react-router-dom";
 import "./layout.css";
 import Topbar from "../components/Common/Topbar/Topbar";
-import Leftbar from "../components/Common/LeftBar/Leftbar";
+import Leftbar from "../components/Common/sideBar/SideBar";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 

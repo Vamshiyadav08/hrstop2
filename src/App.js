@@ -5,7 +5,7 @@ import "./App.css";
 import Login from "./pages/Login/Login";
 import "react-toastify/dist/ReactToastify.css";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import Attendence from "./components/AttendenceComponent/Attendence";
+import Attendence from "./pages/AttendenceComponent/Attendence";
 import LayoutContainer from "./Layout/LayoutContainer";
 import Profile from "./components/HomeComponent/DashboardContent/Profile/Profile";
 import Details from "./components/HomeComponent/DashboardContent/Details/Details";
@@ -25,19 +25,19 @@ import { AttendenceContext } from "./Context";
 
 
 function App() {
-  const [themeval,setthemestate]= useState(localStorage.getItem("themeVal"))
+  const [themeval,setthemestate]= useState((localStorage.getItem("themeVal")))
   const {theme} = useContext(AttendenceContext)
-  
+  console.log(themeval,typeof(themeval),"refreshed")
+
   useEffect(()=>{
     let themee = localStorage.getItem("themeVal")
+    console.log(themee,"themegot from local")
     setthemestate(themee)
   },[theme])
-
- console.log(typeof(themeval))
   
 
   return (
-    <div className={`${themeval==="true"&&"dark-theme"}`}>
+    <div className={`${themeval==="true"?"dark-theme":"light-theme"}`}>
         <Routes>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/" element={<LayoutContainer />}>

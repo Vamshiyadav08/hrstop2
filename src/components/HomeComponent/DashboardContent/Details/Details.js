@@ -29,7 +29,6 @@ const personalDetailsFields = [
     name: "lastname",
     label: "Last Name",
     type: "text",
-    
   },
   {
     name: "date",
@@ -113,13 +112,13 @@ export default function Details() {
     role: "",
   });
 
-  const [themeval, setthemestate] = useState(localStorage.getItem("themeVal"));
-  const { theme } = useContext(AttendenceContext);
+  // const [themeval, setthemestate] = useState(localStorage.getItem("themeVal"));
+  // const { theme } = useContext(AttendenceContext);
 
-  useEffect(() => {
-    let themee = localStorage.getItem("themeVal");
-    setthemestate(themee);
-  }, [theme]);
+  // useEffect(() => {
+  //   let themee = localStorage.getItem("themeVal");
+  //   setthemestate(themee);
+  // }, [theme]);
 
   const handleChangeEvent = (event, val) => {
     console.log(val);
@@ -133,8 +132,12 @@ export default function Details() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(data.firstname,data.personalemail,data.mobile)
-    if (data.firstname !== "" && data.personalemail !== "" && data.mobile !== "") {
+    console.log(data.firstname, data.personalemail, data.mobile);
+    if (
+      data.firstname !== "" &&
+      data.personalemail !== "" &&
+      data.mobile !== ""
+    ) {
       try {
         await setDoc(doc(db, "userDetails", "id1"), data);
         console.log("Added");
@@ -173,9 +176,9 @@ export default function Details() {
         >
           {eachFeild.options.map((option) => (
             <option value={option} key={option}>
-              {option}{" "}
+              {option}
             </option>
-          ))}{" "}
+          ))}
         </select>
       );
     } else if (eachFeild.type === "textarea") {
@@ -241,43 +244,39 @@ export default function Details() {
           {personalDetailsFields.map((eachFeild) => (
             <div className="input-container" key={eachFeild.name}>
               <label
-                className={`${
-                  themeval === "true" ? "label-dark" : "details-label"
-                }`}
+                className= "details-label"
                 htmlFor="middleName"
               >
                 {eachFeild.label}
                 {eachFeild.required && (
                   <span className="star-important">*</span>
-                )}{" "}
+                )}
               </label>
-              {renderInputFeild(eachFeild)}{" "}
+              {renderInputFeild(eachFeild)}
             </div>
-          ))}{" "}
+          ))}
         </div>
         <div className="contact-details">
           <h4 className="details-heading">Contact Details</h4>
           {contactDetailsFields.map((eachFeild) => (
             <div className="input-container" key={eachFeild.name}>
               <label
-                className={`${
-                  themeval === "true" ? "label-dark" : "details-label"
-                }`}
+                className="details-label"
               >
                 {eachFeild.label}
                 {eachFeild.required && (
                   <span className="star-important">*</span>
-                )}{" "}
+                )}
               </label>
-              {renderInputFeild(eachFeild)}{" "}
+              {renderInputFeild(eachFeild)}
             </div>
-          ))}{" "}
+          ))}
         </div>
         {data.length < 1 ? (
           <button className="details-btn">Save</button>
         ) : (
           <button className="details-btn">Update</button>
-        )}{" "}
+        )}
       </form>
     </div>
   );

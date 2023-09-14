@@ -6,13 +6,13 @@ import { AttendenceContext } from "../../../../Context";
 import "./profile.css";
 export default function Profile() {
   const [data, setData] = useState({});
-  const [themeval,setthemestate]= useState(localStorage.getItem("themeVal"))
-  const {theme} = useContext(AttendenceContext)
+  // const [themeval,setthemestate]= useState(localStorage.getItem("themeVal"))
+  // const {theme} = useContext(AttendenceContext)
   
-  useEffect(()=>{
-    let themee = localStorage.getItem("themeVal")
-    setthemestate(themee)
-  },[theme])
+  // useEffect(()=>{
+  //   let themee = localStorage.getItem("themeVal")
+  //   setthemestate(themee)
+  // },[theme])
 
   useEffect(() => {
     const getDataFromFirebase = async () => {
@@ -51,17 +51,17 @@ export default function Profile() {
           <div>
             {data && (
               <>
-                <label className={`${themeval==="true"?"label-dark":"profile-label"}`}>Name</label>
+                <label className="profile-label">Name</label>
                 <p>{data.firstname}</p>
-                <label className={`${themeval==="true"?"label-dark":"profile-label"}`}>Email</label>
+                <label className="profile-label">Email</label>
                 <p>{data.personalemail}</p>
-                <label className={`${themeval==="true"?"label-dark":"profile-label"}`}>Phone</label>
+                <label className="profile-label">Phone</label>
                 <p>{data.mobile}</p>
-                <label className={`${themeval==="true"?"label-dark":"profile-label"}`}>Address</label>
+                <label className="profile-label">Address</label>
                 <p>{data.adress}</p>
-                <label className={`${themeval==="true"?"label-dark":"profile-label"}`}>Date OF Birth</label>
+                <label className="profile-label">Date OF Birth</label>
                 <p>{data.date}</p>
-                <label className={`${themeval==="true"?"label-dark":"profile-label"}`}>Linkedin</label>
+                <label className="profile-label">Linkedin</label>
                 <p>{data.linkedin}</p>
               </>
             )}

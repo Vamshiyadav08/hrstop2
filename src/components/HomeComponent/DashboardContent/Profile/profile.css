@@ -11,7 +11,7 @@
 .profile-details>h3{
     margin-bottom: 2rem;
     font-weight: 400;
-    color: #2679b5;
+    color: var(--main-heading);
     border-bottom:1px dotted #e6e8ed ;
 }
 .profile-image-section{
@@ -32,7 +32,7 @@
 }
 
 .profile-label{
-    color: #393939;
+    color: var(--label-clr);
     margin-bottom: 1rem;
 
 }

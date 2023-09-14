@@ -11,50 +11,42 @@ body {
   
 }
 body{
-  overflow: hidden;
+  overflow: hidden;                                                                                                                                         
 }
-
+.light-theme{
+  --bg-clr:#fff;
+  --text-color:"#fff";
+  --main-heading:#2679b5;
+  --para-clr:#393939;
+  --nav-bg-clr : #f8f8f8;
+  --nav-text-clr : #585858;
+  --label-clr : #393939;
+  --data-details-header-clr:#393939;
+  --data-details-clr:#393939;
+  --attendence-calender-header-bg-clr:#F7FAFD;
+  --sidebar-bg-clr:#f8f8f8
+}
 .dark-theme{
-  background-color: #101418 !important;
-  color: #057ff8;
-  border-bottom: 1px solid #c5d0dc;
+  --bg-clr:#393939;
+  --text-clr:#fff;
+  --main-heading:#2679b5;
+  --para-clr:#f8f8f8;
+  --nav-bg-clr : #393939;
+  --nav-text-clr : #fff;
+  --label-clr : #fff;
+  --data-details-header-clr:#2679b5;
+  --data-details-clr:#393939;
+  --attendence-calender-header-bg-clr:#F7FAFD;
+  --sidebar-bg-clr:#202123;
 }
-.dark-theme-nav{
-  overflow: hidden;
-    padding: .7rem ;
-    border-bottom: 1px solid #ececec;
-    display: flex;
-    align-items: center;
-    font-size: .9rem;
-    border-left: 4px solid transparent;
-    background-color:#101418;
-    &:hover{
-        background-color: #fff;
-        border-left: 4px solid #50a2d9;
-    }
+h3{
+  color: #2679b5;
+  font-weight: 700;
+}
 
-}
-.label-color-dark-mode{
-  
-}
-.label-dark{
-  color: #fff;
-  margin-bottom: 1rem;
-  flex-basis: 30%;
-}
 .hamburger-btn{
   display: none;
 }
-h3{
-  margin-bottom: 0.5rem;
-  font-family: inherit;
-  font-weight: 400;
-  color: #2679b5;
-}
-.valid-check{
-  color: red;
-}
-
 
 @media (max-width:759px)
 {

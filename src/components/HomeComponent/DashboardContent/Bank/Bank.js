@@ -36,13 +36,13 @@ export default function Bank() {
   });
   const [docsData, setDocsData] = useState({});
 
-  const [themeval, setthemestate] = useState(localStorage.getItem("themeVal"));
-  const { theme } = useContext(AttendenceContext);
+  // const [themeval, setthemestate] = useState(localStorage.getItem("themeVal"));
+  // const { theme } = useContext(AttendenceContext);
 
-  useEffect(() => {
-    let themee = localStorage.getItem("themeVal");
-    setthemestate(themee);
-  }, [theme]);
+  // useEffect(() => {
+  //   let themee = localStorage.getItem("themeVal");
+  //   setthemestate(themee);
+  // }, [theme]);
 
   const handleInput = (event) => {
     console.log(event.target.value);
@@ -67,19 +67,21 @@ export default function Bank() {
     }
   };
 
-  const getData = async () => {
-    try {
-      const docRef = doc(db, "bankDetails", "bankID1");
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        let dbData = docSnap.data();
-        setDocsData(dbData);
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const docRef = doc(db, "bankDetails", "bankID1");
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          let dbData = docSnap.data();
+          setDocsData(dbData);
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  getData();
+    };
+    getData();
+  }, []);
   return (
     <div>
       <h3>Bank Account Details</h3>
@@ -87,7 +89,7 @@ export default function Bank() {
         {formFields.map((eachEle) => (
           <div className="bank-input-container" key={eachEle.name}>
             <label
-              className={`${themeval === "true" ? "label-dark" : "bank-label"}`}
+              className= "bank-label"
             >
               {eachEle.label}
               {eachEle.required && <span className="valid-check">*</span>}
@@ -115,7 +117,7 @@ export default function Bank() {
           ))}
         </ul>
 
-        <ul  className="data-content">
+        <ul className="data-content">
           {formFields.map((eachItem, index) => (
             <li className="data-details" key={index}>
               {docsData[eachItem.name]}

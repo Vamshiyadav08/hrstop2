@@ -26,13 +26,13 @@ export default function Family() {
   });
   const [docsData, setDocsData] = useState([]);
 
-  const [themeval, setthemestate] = useState(localStorage.getItem("themeVal"));
-  const { theme } = useContext(AttendenceContext);
+  // const [themeval, setthemestate] = useState(localStorage.getItem("themeVal"));
+  // const { theme } = useContext(AttendenceContext);
 
-  useEffect(() => {
-    let themee = localStorage.getItem("themeVal");
-    setthemestate(themee);
-  }, [theme]);
+  // useEffect(() => {
+  //   let themee = localStorage.getItem("themeVal");
+  //   setthemestate(themee);
+  // }, [theme]);
 
   const handleInput = (event) => {
     console.log(event.target);
@@ -43,7 +43,7 @@ export default function Family() {
       [name]: value,
     });
   };
-  console.log(state);
+ 
 
   const handlesubmit = async (event) => {
     event.preventDefault();
@@ -66,29 +66,31 @@ export default function Family() {
       toast.error("Enter the Required Details");
     }
   };
- 
+   useEffect(()=>{
     const getData = async () => {
       const querySnapshot = await getDocs(collection(db, "family"));
       const data = [];
       querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
+       
         data.push(doc.data());
         setDocsData(data);
       });
     };
    
     getData()
+
+   },[])
+    
   return (
     <div>
       <h3>Bank Account Details</h3>
       <form onSubmit={handlesubmit}>
         {familyFields.map((eachFeild) => (
-          <div className="bank-input-container" key={eachFeild}>
+          <div className="bank-input-container" key={`eachFeild${nanoid()}`}>
             <label
               htmlFor=""
-              className={`${
-                themeval === "true" ? "label-dark" : "family-label"
-              }`}
+              className="family-label"
+          
             >
               {eachFeild.name}
               {eachFeild.required && <span className="valid-check">*</span>}
@@ -117,7 +119,7 @@ export default function Family() {
           ))}
         </ul>
         {docsData.map((eachItem, index) => (
-          <ul key={nanoid()} className="data-content">
+          <ul key={`${nanoid()}ul`} className="data-content">
             {familyFields.map((eachFeild, index) => (
               <li className="data-details-header" key={index}>
                 {eachItem[eachFeild.name]}

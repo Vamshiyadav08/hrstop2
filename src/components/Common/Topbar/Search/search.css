@@ -1,8 +1,6 @@
 .search-page{
     padding: 2rem;
-    display: flex;
-    
-    
+    display: flex; 
 }
 .search-page-details{
     display: flex;
@@ -23,6 +21,7 @@
 .not-found-section{
     text-align: center;
     width: 80%;
+    color: var(--text-clr);
 }
    
 .search-page-button{

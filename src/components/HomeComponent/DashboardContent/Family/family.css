@@ -3,7 +3,7 @@
 }
 .family-label{
    flex-basis: 20%;
-   color: #393939;
+   color: var(--label-clr);
 font-weight: 500;
 }
 .family-input{
@@ -19,11 +19,11 @@ font-weight: 500;
    border-radius: .2rem ;
    color: #fff;
 }
-.family-reset-btn{
+/* .family-reset-btn{
     background-color: #ca2d69;
     width: 8rem;
     border: none;
     padding: .2rem;
     border-radius: .2rem ;
     color: #fff;
-}
+} */

@@ -1,11 +1,5 @@
-import {
-  addDays,
-  addWeeks,
-  endOfWeek,
-  startOfWeek,
-  subWeeks,
-} from "date-fns";
-import React, {  useState } from "react";
+import { addDays, addWeeks, endOfWeek, startOfWeek, subWeeks } from "date-fns";
+import React, { useState } from "react";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { MdArrowRight } from "react-icons/md";
 import { nanoid } from "nanoid";
@@ -15,8 +9,8 @@ export default function Attendence() {
   const date = new Date();
   let firstDayOfWeek = startOfWeek(date);
   const noWeekDays = 7;
-  const [changeToFirstDayOFWeek, setchangeToFirstDayOFWeek] = useState(firstDayOfWeek);
-
+  const [changeToFirstDayOFWeek, setchangeToFirstDayOFWeek] =
+    useState(firstDayOfWeek);
 
   const nextWeek = () => {
     let nextWeekFirstDay = startOfWeek(addWeeks(changeToFirstDayOFWeek, 1));
@@ -28,20 +22,19 @@ export default function Attendence() {
     setchangeToFirstDayOFWeek(previousWeekFirstDay);
   };
 
-  const weekDays = Array.from({ length: noWeekDays }).map((_, index) =>{
-  return(
-    addDays(changeToFirstDayOFWeek, index + 1)
-  )});
+  const weekDays = Array.from({ length: noWeekDays }).map((_, index) => {
+    return addDays(changeToFirstDayOFWeek, index + 1);
+  });
 
   return (
     <div className="attendence-container">
       <div className="attendence-header">
-        <small>
-          Attendence{" "}
-          <span>
-            <MdArrowRight /> Attendence{" "}
-          </span>
-        </small>
+        <h3>
+          Attendence
+          {/* <span>
+            <MdArrowRight /> 
+          </span> */}
+        </h3>
         <div className="attendenece-btn">
           <button className="attendence-req-btn">Request Attendence</button>
           <button className="attendence-exp-btn">Export</button>
@@ -58,7 +51,10 @@ export default function Attendence() {
         </p>
         <div className="attendence-navigators">
           <BiSolidLeftArrow onClick={previousweek} />
-          <span>{`${addDays(changeToFirstDayOFWeek, 1).toDateString()}-${addDays(
+          <span>{`${addDays(
+            changeToFirstDayOFWeek,
+            1
+          ).toDateString()}-${addDays(
             endOfWeek(changeToFirstDayOFWeek),
             1
           ).toDateString()}`}</span>
@@ -75,25 +71,30 @@ export default function Attendence() {
         </div>
         <div>
           <div className="attendence-dates">
-          <ul className="attendence-list-container">
-            {weekDays.map((eachDay, index) =>
-              (
-              
-               
-                  <li key={nanoid()} className="attendence-list" id={index}>
-                    <p>
+            <ul className="attendence-list-container">
+              {weekDays.map((eachDay, index) => (
+                <li key={nanoid()} className="attendence-list" id={index}>
+                  <p>
                     {eachDay.toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "short",
-                        day: "numeric",
-                        weekday: "short",
-                      })}
-                    </p>
-                    <progress value="100" max="100" className={`progress-bar${eachDay.toDateString()===date.toDateString()?"attendece-progress-bar":""}`}></progress>
-                    <p>9:20</p>
-                  </li>
-            ))}
-             </ul>
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                      weekday: "short",
+                    })}
+                  </p>
+                  <progress
+                    value="100"
+                    max="100"
+                    className={`progress-bar${
+                      eachDay.toDateString() === date.toDateString()
+                        ? "attendece-progress-bar"
+                        : ""
+                    }`}
+                  ></progress>
+                  <p>9:20</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

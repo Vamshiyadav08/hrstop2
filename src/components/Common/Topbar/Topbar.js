@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import { db } from "../../../firebaseConfig";
-import { getDoc,getDocs,doc,collection } from "firebase/firestore";
+import { getDoc, getDocs, doc, collection } from "firebase/firestore";
 
 import "./topbar.css";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -10,9 +10,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { AttendenceContext } from "../../../Context";
 import { getAuth, signOut } from "firebase/auth";
 import "react-toggle/style.css";
-import Toggle from 'react-toggle';
-
-
+import Toggle from "react-toggle";
 
 const auth = getAuth();
 
@@ -24,20 +22,20 @@ export default function Topbar() {
   const [hamburgerbtn, sethamburgerBtn] = useState(false);
   const [data, setData] = useState({});
 
-  const [theme,setthemeState] =useState(localStorage.getItem("themeVal"))
-  const contextData = useContext(AttendenceContext);
-  useEffect(()=>{
-    const setTheme=(()=>{
-    localStorage.setItem("themeVal",theme)
-    }
-    )
-    setTheme()
-  },[theme])
+  const [theme, setthemeState] = useState(localStorage.getItem("themeVal"));
 
-  const handletheme=((event)=>{
-    contextData.themeContext(event.target.checked)
-    setthemeState(event.target.checked)
-  })
+  const contextData = useContext(AttendenceContext);
+  useEffect(() => {
+    const setTheme = () => {
+      localStorage.setItem("themeVal",(theme));
+    };
+    setTheme();
+  }, [theme]);
+
+  const handletheme = (event) => {
+    contextData.themeContext(event.target.checked);
+    setthemeState(event.target.checked);
+  };
 
   const [time, setTime] = useState("");
   const handlehamburger = () => {
@@ -91,7 +89,7 @@ export default function Topbar() {
         navigate("./login", { replace: true });
       })
       .catch((error) => {
-      console.log(error)
+        console.log(error);
       });
   };
   const getData = async (searchedValue) => {
@@ -102,9 +100,8 @@ export default function Topbar() {
     });
 
     contextData.searchUserData(data, searchedValue);
-    console.log(data,"dataa")
+    console.log(data, "dataa");
   };
-  
 
   const handleInput = (event) => {
     if (event.key === "Enter") {
@@ -165,14 +162,10 @@ export default function Topbar() {
         </div>
         <div>
           <label>
-            <Toggle
-            icons={false}
-            onChange={handletheme}
-           
-            />
+            <Toggle icons={false} onChange={handletheme} />
           </label>
         </div>
-        
+
         <div className="profile-topbar-container">
           <div>
             <img
@@ -181,8 +174,8 @@ export default function Topbar() {
               src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png"
             />
             <div className="profile-topbar-details">
-              <h4>{data.firstname}</h4>
-              <span>{data.role}</span>
+              <h4>vamshi Thotakuri</h4>
+              <span>Associate Share Point Dev</span>
             </div>
             <div className="arrow-icon">
               <BiSolidDownArrow

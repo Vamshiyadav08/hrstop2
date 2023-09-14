@@ -1,9 +1,4 @@
-.skills>h3{
-    margin-bottom: 0.5rem;
-    font-weight: 400;
-    color: #2679b5;
-    border-bottom:1px dotted #e6e8ed ;
-}
+
 .skills-section{
     display: flex;
     justify-content: space-between;
