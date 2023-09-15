@@ -11,6 +11,7 @@
 }
 .home-layout {
   display: flex;
+  margin-top: 10vh;
 }
 .home-outlet-container {
   border: 1px dotted #c5d0dc;

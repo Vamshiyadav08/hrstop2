@@ -48,6 +48,8 @@ h3{
   display: none;
 }
 
+
+
 @media (max-width:759px)
 {
   .profile-topbar-container{
@@ -56,12 +58,4 @@ h3{
   .hamburger-btn{
     display: inline-block;
   }
-  
-  .aside-container-active{
-    display: block;
-  }
-  .aside-container-hide{
-    display: none;
-  }
 }
-

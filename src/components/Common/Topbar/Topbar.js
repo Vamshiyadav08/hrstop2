@@ -11,6 +11,10 @@ import { AttendenceContext } from "../../../Context";
 import { getAuth, signOut } from "firebase/auth";
 import "react-toggle/style.css";
 import Toggle from "react-toggle";
+import {AiOutlineMenu} from "react-icons/ai"
+import "@szhsin/react-menu/dist/index.css";
+import "@szhsin/react-menu/dist/transitions/slide.css";
+import TopbarProfileMenu from "../../TopbarProfileMenu";
 
 const auth = getAuth();
 
@@ -27,7 +31,7 @@ export default function Topbar() {
   const contextData = useContext(AttendenceContext);
   useEffect(() => {
     const setTheme = () => {
-      localStorage.setItem("themeVal",(theme));
+      localStorage.setItem("themeVal", theme);
     };
     setTheme();
   }, [theme]);
@@ -45,24 +49,15 @@ export default function Topbar() {
 
   const handleTimeIn = () => {
     const now = new Date();
-    let checkTimeLabel;
+    let checked = !CheckIn;
+
     const time = now.toLocaleString("en-US", {
       hour: "numeric",
       minute: "numeric",
       hour12: true,
     });
-    let checked = !CheckIn;
-    if (time === "" && checked === false) {
-      checkTimeLabel = "";
-    }
-
-    if (checked) {
-      checkTimeLabel = "Last In : ";
-    }
-    if (checked === false) {
-      checkTimeLabel = "Last Out : ";
-    }
-
+    let checkTimeLabel = time === "" && checked === false && "";
+    checkTimeLabel = checked ? "Last In : " : "Last Out : ";
     let timeString = checkTimeLabel + time;
     setTime(timeString);
     contextData.timeDetails({
@@ -72,26 +67,7 @@ export default function Topbar() {
     setCheckIn(checked);
   };
 
-  const handledropdown = () => {
-    setdropdown(!showDropdown);
-  };
-
-  let navigate = useNavigate();
-  //navigate to profile
-  const navigateToProfile = () => {
-    navigate("./home/profile");
-  };
-
-  //logout
-  const handleLogout = async () => {
-    signOut(auth)
-      .then(() => {
-        navigate("./login", { replace: true });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  
   const getData = async (searchedValue) => {
     const querySnapshot = await getDocs(collection(db, "companyusers"));
     const data = [];
@@ -124,60 +100,60 @@ export default function Topbar() {
     getDataFromFirebase();
   }, []);
   return (
-    <header className="header">
-      <div className="header-logo">
+    <header className='header'>
+      <div className='header-logo'>
         <img
-          className="topbar-logo"
+          className='topbar-logo'
           src={require("../../../assests/images/hrstop.png")}
-          alt="actualize"
-          onClick={navigateToProfile}
+          // alt='actualize'
+          // onClick={navigateToProfile}
         />
       </div>
-      <div className="topbar-container">
+      <div className='topbar-container'>
         <div>
           <img
-            className="topbar-actualize-logo"
+            className='topbar-actualize-logo'
             src={require("../../../assests/images/Logo.jpg")}
-            alt="actualize"
+            alt='actualize'
           />
         </div>
         <div className={`search-container ${isFocused ? "focused" : ""}`}>
-          <AiOutlineSearch className="search-icon" />
+          <AiOutlineSearch className='search-icon' />
           <input
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
-            type="search"
+            type='search'
             className={`search-bar ${isFocused ? "focused" : ""}`}
-            name="search"
-            placeholder="Search Employee"
+            name='search'
+            placeholder='Search Employee'
             onKeyDown={handleInput}
           />
         </div>
-        <div className="topbar-btn-container">
-          <button className="topbar-btn" onClick={handleTimeIn}>
+        <div className='topbar-btn-container'>
+          <button className='topbar-btn' onClick={handleTimeIn}>
             {CheckIn ? "Time Out" : "Time In"}
           </button>
 
-          <span className="topbar-btn-checkLabel">{time}</span>
+          <span className='topbar-btn-checkLabel'>{time}</span>
         </div>
         <div>
           <label>
             <Toggle icons={false} onChange={handletheme} />
           </label>
         </div>
-
-        <div className="profile-topbar-container">
+        <TopbarProfileMenu/>
+        {/* <div className='profile-topbar-container'>
           <div>
             <img
-              alt="profile"
-              className="profile-topbar-image"
-              src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png"
+              alt='profile'
+              className='profile-topbar-image'
+              src='https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png'
             />
-            <div className="profile-topbar-details">
+            <div className='profile-topbar-details'>
               <h4>vamshi Thotakuri</h4>
               <span>Associate Share Point Dev</span>
             </div>
-            <div className="arrow-icon">
+            <div className='arrow-icon'>
               <BiSolidDownArrow
                 className={`arrow ${showDropdown ? "up" : "down"}`}
                 onClick={handledropdown}
@@ -185,18 +161,18 @@ export default function Topbar() {
             </div>
           </div>
           {showDropdown && (
-            <div className="dropdown">
-              <div className="dropdown-item" onClick={navigateToProfile}>
+            <div className='dropdown'>
+              <div className='dropdown-item' onClick={navigateToProfile}>
                 Profile
               </div>
-              <div className="dropdown-item" onClick={handleLogout}>
+              <div className='dropdown-item' onClick={handleLogout}>
                 Logout
               </div>
             </div>
           )}
-        </div>
-        <button className="hamburger-btn" onClick={handlehamburger}>
-          <GiHamburgerMenu />
+        </div> */}
+        <button className='hamburger-btn' onClick={handlehamburger}>
+          <AiOutlineMenu/>
         </button>
       </div>
     </header>

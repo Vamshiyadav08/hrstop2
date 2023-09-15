@@ -27,7 +27,7 @@ import { AttendenceContext } from "./Context";
 function App() {
   const [themeval,setthemestate]= useState((localStorage.getItem("themeVal")))
   const {theme} = useContext(AttendenceContext)
-  console.log(themeval,typeof(themeval),"refreshed")
+
 
   useEffect(()=>{
     let themee = localStorage.getItem("themeVal")

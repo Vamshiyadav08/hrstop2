@@ -14,6 +14,7 @@ import { BiHistory, BiEdit } from "react-icons/bi";
 import { AttendenceContext } from "../../../Context";
 import "../Topbar/topbar.css";
 import "./sidebar.css";
+import TopbarProfileMenu from "../../TopbarProfileMenu";
 
 const navItems = [
   { id: "dashboard", label: "DashBoard", icon: <AiFillDashboard /> },
@@ -38,26 +39,19 @@ export default function SideBar() {
   const [activeTab, setActiveTab] = useState(null);
 
   const [themeval, setthemestate] = useState(localStorage.getItem("themeVal"));
-  const { hamburgerData, theme } = useContext(AttendenceContext);
-
-  useEffect(() => {
-    let themee = localStorage.getItem("themeVal");
-    setthemestate(themee);
-  }, [theme]);
-  
+  const { hamburgerData } = useContext(AttendenceContext);
 
   const handleBtn = (clickedElement) => {
     console.log("clicked");
     setActiveTab(clickedElement);
   };
-
+  console.log(hamburgerData,"data")
   return (
-    <aside
-      className={` "sidebar-container" ${
-        hamburgerData ? "sidebar-container-active" : "sidebar-container-hide"
-      }`}
-    >
-      <nav className="sidebar-nav">
+    <aside className='sidebar-container'>
+      <nav className='sidebar-nav'>
+        {
+          hamburgerData===true?<TopbarProfileMenu className="topbar-menu"/>:""
+        }
         <ul>
           {navItems.map((eachItem) => (
             <li
@@ -74,10 +68,10 @@ export default function SideBar() {
                     ? "home/profile"
                     : eachItem.id
                 }
-                className="sidebar-nav-link"
+                className='sidebar-nav-link'
                 onClick={() => handleBtn(eachItem.id)}
               >
-                <span className="sidebar-nav-icon">{eachItem.icon}</span>
+                <span className='sidebar-nav-icon'>{eachItem.icon}</span>
                 {eachItem.label}
               </Link>
             </li>
