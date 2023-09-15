@@ -23,8 +23,8 @@ const organizationData = {
     { name: "madhu", role: "Devoloper", time: "fulltime", rmanager: "mansoor" },
   ],
  underDirectorA :[
-  { name: "Mansoor", role: "Devoloper", time: "fulltime", rmanager: "mansoor" },
-  { name: "vinayak", role: "Devoloper", time: "fulltime", rmanager: "mansoor" },
+  { name: "Mansoor", role: "vp", time: "fulltime", rmanager: "mansoor" },
+  { name: "vinayak", role: "Mg", time: "fulltime", rmanager: "mansoor" },
   { name: "shaymala", role: "Devoloper", time: "fulltime", rmanager: "mansoor" },
   { name: "Vijayak", role: "Devoloper", time: "fulltime", rmanager: "mansoor" },
   { name: "radha", role: "Devoloper", time: "fulltime", rmanager: "mansoor" },
