@@ -1,19 +1,16 @@
 
-.profile-details>div{
+.profile-details{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
     justify-content: center;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
     padding: 1rem;
     overflow: auto;
 }
-.profile-details>h3{
-    margin-bottom: 2rem;
-    font-weight: 400;
-    color: var(--main-heading);
-    border-bottom:1px dotted #e6e8ed ;
+.profile-details>p{
+    padding: .5rem 1rem;
 }
+
 .profile-image-section{
     text-align: center;
 }
@@ -33,7 +30,11 @@
 
 .profile-label{
     color: var(--label-clr);
-    margin-bottom: 1rem;
+    padding: .5rem 1rem;
+    font-weight: 700;
+}
+.profile-details p:nth-of-type(2n+1),.profile-details label:nth-of-type(2n+1)  {
+    background-color: #F3F9FC;
 
 }
 

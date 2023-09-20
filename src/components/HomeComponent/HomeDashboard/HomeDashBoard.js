@@ -15,39 +15,30 @@ const navItems = [
 
 export default function HomeDashBoard() {
   const [activeTab, setActiveTab] = useState(null);
-  // const [themeval, setthemestate] = useState(localStorage.getItem("themeVal"));
-  // const { theme } = useContext(AttendenceContext);
-
-  // useEffect(() => {
-  //   let themee = localStorage.getItem("themeVal");
-  //   setthemestate(themee);
-  // }, [theme]);
-
   const handleBtn = (clickedElement) => {
     setActiveTab(clickedElement);
   };
   return (
-    <main className="home-component">
-      <aside
-        className= "home-container"
-      >
-        <nav className="home-nav">
+    <main className='home-component'>
+      <aside className='home-container'>
+        <nav className='home-nav'>
           <ul>
-            {navItems.map((eachItem) => (
-              <li
-                key={eachItem.id}
-                className={`home-nav-list ${
-                  activeTab === eachItem.id ? "active-tab" : ""
-                } `}
+            {navItems.map((eachItem, index) => (
+              <Link
+                key={index}
+                to={eachItem.id}
+                className='home-nav-link'
+                onClick={() => handleBtn(eachItem.id)}
               >
-                <Link
-                  to={eachItem.id}
-                  className="home-nav-link"
-                  onClick={() => handleBtn(eachItem.id)}
+                <li
+                  key={`list${index}`}
+                  className={`home-nav-list ${
+                    activeTab === eachItem.id ? "active-tab" : ""
+                  } `}
                 >
                   {eachItem.label}
-                </Link>
-              </li>
+                </li>
+              </Link>
             ))}
           </ul>
         </nav>

@@ -1,5 +1,5 @@
-.header{
-    background-color: rgb(66,139,202);
+.header {
+    background-color: rgb(66, 139, 202);
     display: flex;
     align-items: center;
     width: 100%;
@@ -7,138 +7,157 @@
     position: fixed;
     top: 0;
 }
-.header-logo{
-    width: 20%;
-    &:hover{
+.header-logo {
+    width: 23%;
+    &:hover {
         cursor: pointer;
     }
 }
-.topbar-logo{
-    width: 5rem;
+.topbar-logo {
+    width: 8rem;
     padding-left: 1rem;
 }
 
-.topbar-container{
+.topbar-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: .25rem;
+    padding: 0.25rem 1rem;
     color: #fff;
     width: 100%;
     position: relative;
 }
-.topbar-actualize-logo{
+.topbar-actualize-logo {
     width: 4rem;
-    height: 3rem;
- 
 }
-.search-container{
+.search-container {
     display: flex;
     align-items: center;
-    padding: .25rem;
-    background-color: #5999D0;
-    border-radius: .5rem;
+    padding: 0.25rem;
+    background-color: #5999d0;
+    border-radius: 0.5rem;
     height: 2.25rem;
-
 }
-.search-icon{
-    color: #AEC9DF;
-   
+.search-icon {
+    color: #aec9df;
 }
-.search-bar{
-    background-color: #5999D0 ;
+.search-bar {
+    background-color: #5999d0;
     border: none;
     width: 100%;
     height: 2.25rem;
-    
+
     /* transition: background-color 0.3s;   */
-    &::placeholder{
-        color: #AEC9DF;
+    &::placeholder {
+        color: #aec9df;
         font-weight: 400;
     }
-    &:focus{
+    &:focus {
         border: none;
         outline: none;
     }
 }
 
-.search-bar.focused, .search-container.focused{
+.search-bar.focused,
+.search-container.focused {
     background-color: #fff;
     color: #000;
-
 }
-.topbar-btn-container{
+.topbar-btn-container {
     display: flex;
     align-items: center;
-    width: 27%
+    width: 27%;
 }
 
-.topbar-btn{
-    background-color: #7BB386;
+.topbar-btn {
+    background-color: #7bb386;
     border: none;
     width: 62%;
     /* height: 2rem; */
+
     border-radius: 0.25rem;
     color: inherit;
     padding: 0.8em 0.5em;
+    height: 40px;
+    overflow: hidden;
 }
-.profile-topbar-container{
-    
-    &>div{
-        display: flex;
-        align-items: center;
-    }
+.profile-topbar-container {
+    display: flex;
 }
 
-.profile-topbar-details{
+.profile-topbar-details {
     display: flex;
     flex-direction: column;
-    font-size: .9rem;
 }
-.profile-topbar-image{
-    width: 35px ;
+.profile-topbar-image {
+    width: 35px;
     height: 35px;
-   margin-right: 0.8rem;
+    margin-right: 0.8rem;
 }
-.topbar-btn-checkLabel{
-    font-size: .9rem;
-    padding-left: .5rem;
+.topbar-btn-checkLabel {
+    font-size: 0.9rem;
+    padding-left: 0.5rem;
     width: 13em;
 }
 
-.dropdown{
-        background-color: #fff;
+.dropdown {
+    display: flex;
     flex-direction: column;
+    width: 25%;
+    background-color: #fff;
     position: absolute;
     font-weight: 400;
-    box-shadow: 0 0 0 1px rgba(20,20,31,.05), 0 2px 7px 1px rgba(20,20,31,.16);
-    text-align: center;
+    box-shadow: 0 0 0 1px rgba(20, 20, 31, 0.05), 0 2px 7px 1px rgba(20, 20, 31, 0.16);
     top: 100%;
-    min-width: 10rem;
-    padding: 0.5rem 0;
-    margin: 0.125rem 0 0;
+    line-height: 2;
     font-size: 1rem;
-    color: #393939;
-    border: 1px solid rgba(20,20,31,.15);
-    border-radius: 0.25rem;
+    border: 1px solid rgba(20, 20, 31, 0.15);
     z-index: 1000;
+    color: #333;
+    border-radius: 0.2em;
+    text-align: center;
+}
+.dropdown-item {
+    color: var(--text-clr);
+    width: 100%;
+    font-size: .8em;
 }
 .dropdown-item:hover{
-    background-color: #6fb3e0;
-    color: #fff;
-    cursor: pointer;
-    width: 100%;
+        background-color: #6fb3e0;
+        cursor: pointer;
+        width: 100%;
+ 
 }
-.topbar-menu{
-    background-color: red;
-    border :none;
-}
-@media (max-width:759px)
-{
-  .profile-topbar-container{
+.hamburger-btn {
     display: none;
-  }
-  .hamburger-btn{
-    display: inline-block;
-  }
+}
+.topbar-menu {
+    background-color: red;
+    border: none;
+}
+.topbar-profile-menu {
+    display: block;
+}
+@media(max-width: 759px) {
+    .topbar-profile-menu {
+        display: none;
+    }
+    .hamburger-btn {
+        display: block;
+        border: none;
+        width: 2em;
+    }
+    
+    .topbar-actualize-logo {
+        width: 2rem;
+    }
+    .topbar-btn {
+        min-width: 3rem;
+    }
+    .header-logo{
+        display: none;
+    }
+    .topbar-btn-checkLabel{
+        display: none;
+    }
 }

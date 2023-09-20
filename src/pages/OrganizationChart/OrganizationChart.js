@@ -3,14 +3,12 @@ import { Tree, TreeNode } from "react-organizational-chart";
 import organizationData from "./organizationData.js";
 import "./organizationchart.css";
 
-
-
 const EmployeeNode = ({ name, role, time, rmanager, onClick }) => (
-  <div className="chart-field" onClick={onClick}>
+  <div className='chart-feild' onClick={onClick}>
     <img
-      className="node-img"
-      src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png"
-      alt=""
+      className='node-img'
+      src='https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png'
+      alt=''
     />
     <h3>{name}</h3>
     <p>{role}</p>
@@ -20,41 +18,92 @@ const EmployeeNode = ({ name, role, time, rmanager, onClick }) => (
 );
 
 export default function OrganizationChart() {
-  const [clickBoard, setBoard] = useState(false);
-  const [clickDirectorA, setClickDirectorA] = useState(false);
-  const [clickDirectorB, setClickDirectorB] = useState(false);
-  const [clickVicePresident, setClickVicePresident] = useState(false);
-  const [clickDeputyMG, setDeputyMG] = useState(false);
-
-  const toggleClick = (stateUpdater) => () => {
-    stateUpdater((prevState) => !prevState);
+  const [clickedState, setClickedState] = useState({
+    DirectorA: false,
+    vicepresident: false,
+    HrManager: false,
+    SystemAdministator: false,
+    BussinessDeveloper: false,
+    SeniorManager: false,
+    DirectorB: false,
+  });
+  console.log(clickedState.DirectorB);
+  const toggleClick = (emprole) => () => {
+    setClickedState((prevState) => ({
+      ...prevState,
+      [emprole]: !prevState[emprole],
+    }));
   };
-console.log(clickVicePresident,clickDirectorA)
+
   return (
-    <div className="organization-container">
-      <Tree lineWidth={"2px"} lineColor={"black"} label={<EmployeeNode name="Board Of Director" role="Director" time="Full Time" rmanager="Director" onClick={toggleClick(setClickDirectorA)} />}>
-        <TreeNode label={<EmployeeNode name="Akhilesh" role="Director" time="Full Time" rmanager="Director" onClick={toggleClick(setClickDirectorA)} />}>
-          {clickDirectorA && (
-            <TreeNode>
-              {clickDirectorA &&
+    <div className='organization-container'>
+      <Tree
+        lineWidth={"2px"}
+        lineColor={"black"}
+        label={
+          <EmployeeNode
+            name='Board Of Director'
+            role='Director'
+            time='Full Time'
+            rmanager='Director'
+          />
+        }
+      >
+        <TreeNode
+          linestyle={clickedState.DirectorA ? "solid" : "none"}
+          label={
+            <EmployeeNode
+              name='Akhilesh'
+              role='Director'
+              time='Full Time'
+              rmanager='Director'
+              onClick={toggleClick("DirectorA")}
+            />
+          }
+        >
+          {clickedState.DirectorA && (
+            <>
+              {clickedState.DirectorA &&
                 organizationData.underDirectorA.map((employee, index) => (
-                  <TreeNode key={index} label={<EmployeeNode {...employee} />} onClick={toggleClick(setClickVicePresident)} >
-                    {clickVicePresident && (
-                      <>
-                        {
-                          organizationData.underVicepresidentArr.map((employee, vpIndex) => (
-                            <TreeNode key={vpIndex} label={<EmployeeNode {...employee} />} />
-                          ))}
-                      </>
-                    )}
+                  <TreeNode
+                    key={index}
+                    label={
+                      <EmployeeNode
+                        {...employee}
+                        onClick={toggleClick(employee.role)}
+                      />
+                    }
+                  >
+                    {employee.role === "vicepresident" &&
+                      clickedState.vicepresident && (
+                        <>
+                          {organizationData.underVicepresidentArr.map(
+                            (employee, vpIndex) => (
+                              <TreeNode
+                                key={vpIndex}
+                                label={<EmployeeNode {...employee} />}
+                              />
+                            )
+                          )}
+                        </>
+                      )}
                   </TreeNode>
                 ))}
-            </TreeNode>
+            </>
           )}
         </TreeNode>
-
-        <TreeNode label={<EmployeeNode name="Harish Kumar" role="Director" time="Full Time" rmanager="Director" onClick={toggleClick(setClickDirectorB)} />}>
-          {clickDirectorB &&
+        <TreeNode
+          label={
+            <EmployeeNode
+              name='Harish Kumar'
+              role='Director'
+              time='Full Time'
+              rmanager='Director'
+              onClick={toggleClick("DirectorB")}
+            />
+          }
+        >
+          {clickedState.DirectorB &&
             organizationData.underDirectorB.map((employee, index) => (
               <TreeNode key={index} label={<EmployeeNode {...employee} />} />
             ))}
@@ -63,16 +112,3 @@ console.log(clickVicePresident,clickDirectorA)
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

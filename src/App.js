@@ -1,5 +1,5 @@
 import { ToastContainer } from "react-toastify";
-import React, { useContext,useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Login from "./pages/Login/Login";
@@ -21,47 +21,43 @@ import PageNotFound from "./components/Common/PageNotFound";
 import Search from "./components/Common/Topbar/Search/Search";
 import MyCalender from "./pages/Calender/Calender";
 import { AttendenceContext } from "./Context";
-  
-
 
 function App() {
-  const [themeval,setthemestate]= useState((localStorage.getItem("themeVal")))
-  const {theme} = useContext(AttendenceContext)
+  const [themeval, setthemestate] = useState(localStorage.getItem("themeVal"));
+  const { theme } = useContext(AttendenceContext);
 
-
-  useEffect(()=>{
-    let themee = localStorage.getItem("themeVal")
-    console.log(themee,"themegot from local")
-    setthemestate(themee)
-  },[theme])
-  
+  useEffect(() => {
+    let themee = localStorage.getItem("themeVal");
+    console.log(themee, "themegot from local");
+    setthemestate(themee);
+  }, [theme]);
 
   return (
-    <div className={`${themeval==="true"?"dark-theme":"light-theme"}`}>
-        <Routes>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/" element={<LayoutContainer />}>
-            <Route index element={<Dashboard />} />
-            <Route path="/calender" element={<MyCalender/>}/>
-            <Route path="/home" element={<HomeLayout />}>
-              <Route path="/home/profile" element={<Profile />} />
-              <Route path="/home/details" element={<Details />} />
-              <Route path="/home/skills" element={<Skills />} />
-              <Route path="/home/documents" element={<Documents />} />
-              <Route path="/home/education" element={<Education />} />
-              <Route path="/home/family" element={<Family />} />
-              <Route path="/home/bank" element={<Bank />} />
-            </Route>
-            <Route path="/attendence" element={<Attendence />}></Route>
-            <Route
-              path="/organizationchart"
-              element={<OrganizationChart />}
-            ></Route>
-            <Route path="/admin" element={<Admin />}></Route>
-            <Route path="/search" element={<Search />} />
-            <Route path="*" element={<PageNotFound />} />
+    <div className={`${themeval === "true" ? "dark-theme" : "light-theme"}`}>
+      <Routes>
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/' element={<LayoutContainer />}>
+          <Route index element={<Dashboard />} />
+          <Route path='/calender' element={<MyCalender />} />
+          <Route path='/home' element={<HomeLayout />}>
+            <Route path='/home/profile' element={<Profile />} />
+            <Route path='/home/details' element={<Details />} />
+            <Route path='/home/skills' element={<Skills />} />
+            <Route path='/home/documents' element={<Documents />} />
+            <Route path='/home/education' element={<Education />} />
+            <Route path='/home/family' element={<Family />} />
+            <Route path='/home/bank' element={<Bank />} />
           </Route>
-        </Routes>
+          <Route path='/attendence' element={<Attendence />}></Route>
+          <Route
+            path='/organizationchart'
+            element={<OrganizationChart />}
+          ></Route>
+          <Route path='/admin' element={<Admin />}></Route>
+          <Route path='/search' element={<Search />} />
+          <Route path='*' element={<PageNotFound />} />
+        </Route>
+      </Routes>
       {/* </AttendenceProvider> */}
       <ToastContainer />
     </div>

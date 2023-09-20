@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import "./family.css";
-import { AttendenceContext } from "../../../../Context";
 import { db } from "../../../../firebaseConfig";
-import { collection, addDoc, getDocs} from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { nanoid } from "nanoid";
 
@@ -25,19 +24,13 @@ export default function Family() {
     adress: "",
   });
   const [docsData, setDocsData] = useState([]);
-
- 
-
   const handleInput = (event) => {
-    console.log(event.target);
     const { name, value } = event.target;
-    console.log(name, value);
     setStateInput({
       ...state,
       [name]: value,
     });
   };
- 
 
   const handlesubmit = async (event) => {
     event.preventDefault();
@@ -60,68 +53,67 @@ export default function Family() {
       toast.error("Enter the Required Details");
     }
   };
-   useEffect(()=>{
+  useEffect(() => {
     const getData = async () => {
       const querySnapshot = await getDocs(collection(db, "family"));
       const data = [];
       querySnapshot.forEach((doc) => {
-       
         data.push(doc.data());
         setDocsData(data);
       });
     };
-   
-    getData()
 
-   },[])
-    
+    getData();
+  }, []);
+
   return (
     <div>
       <h3>Bank Account Details</h3>
       <form onSubmit={handlesubmit}>
         {familyFields.map((eachFeild) => (
-          <div className="bank-input-container" key={`eachFeild${nanoid()}`}>
-            <label
-              htmlFor=""
-              className="family-label"
-          
-            >
-              {eachFeild.name}
-              {eachFeild.required && <span className="valid-check">*</span>}
+          <div className='bank-input-container' key={`eachFeild${nanoid()}`}>
+            <label htmlFor='' className='family-label'>
+              {eachFeild.label}
+              {eachFeild.required && <span className='valid-check'>*</span>}
             </label>
             <input
-              type="text"
+              type='text'
               name={eachFeild.name}
-              className="family-input"
+              className='family-input'
               onChange={handleInput}
               placeholder={eachFeild.label}
             />
           </div>
-          
         ))}
         <div>
-          <button className="family-btn" type="submit" >Add Details</button>
+          <button className='family-btn' type='submit'>
+            Add Details
+          </button>
         </div>
       </form>
 
-      <div className="data-container">
-        <ul className="data-header-container">
-          {familyFields.map((eachFeild, index) => (
-            <li className="data-details-header" key={nanoid()}>
-              {eachFeild.name}
-            </li>
-          ))}
-        </ul>
-        {docsData.map((eachItem, index) => (
-          <ul key={`${nanoid()}ul`} className="data-content">
+      <table className='data-container'>
+        <thead>
+          <tr>
             {familyFields.map((eachFeild, index) => (
-              <li className="data-details-header" key={index}>
-                {eachItem[eachFeild.name]}
-              </li>
+              <th key={nanoid()} className='table-header'>
+                {eachFeild.label}
+              </th>
             ))}
-          </ul>
-        ))}
-      </div>
+          </tr>
+        </thead>
+        <tbody>
+          {docsData.map((eachItem) => (
+            <tr key={nanoid()}>
+              {familyFields.map((eachFeild) => (
+                <td className='table-data' key={nanoid()}>
+                  {eachItem[eachFeild.name]}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

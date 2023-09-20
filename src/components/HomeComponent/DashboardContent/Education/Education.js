@@ -4,7 +4,6 @@ import { db } from "../../../../firebaseConfig";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { nanoid } from "nanoid";
-import { AttendenceContext } from "../../../../Context";
 
 const educationFields = [
   { label: "Degree", name: "name", required: true },
@@ -25,14 +24,6 @@ export default function Education() {
     gpa: "",
   });
   const [docsData, setDocsData] = useState([]);
-
-  // const [themeval, setthemestate] = useState(localStorage.getItem("themeVal"));
-  // const { theme } = useContext(AttendenceContext);
-
-  // useEffect(() => {
-  //   let themee = localStorage.getItem("themeVal");
-  //   setthemestate(themee);
-  // }, [theme]);
 
   const handleInput = (event) => {
     const { name, value } = event.target;
@@ -68,60 +59,59 @@ export default function Education() {
       const querySnapshot = await getDocs(collection(db, "education"));
       const data = [];
       querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
         data.push(doc.data());
         setDocsData(data);
       });
     };
     getData();
-  },[]);
+  }, []);
 
   return (
     <div>
       <h3>Education Details</h3>
       <form onSubmit={handlesubmit}>
-        {educationFields.map((eachFeild) => (
-          <div className="education-input-container" key={eachFeild.className}>
-            <label
-              htmlFor=""
-              className="education-label"
-             
-            >
+        {educationFields.map((eachFeild, index) => (
+          <div className='education-input-container' key={index}>
+            <label htmlFor='' className='education-label'>
               {eachFeild.label}
-              {eachFeild.required && <span className="valid-check">*</span>}
+              {eachFeild.required && <span className='valid-check'>*</span>}
             </label>
             <input
-              type="text"
+              type='text'
               name={eachFeild.name}
-              className="education-input"
+              className='education-input'
               onChange={handleInput}
               placeholder={eachFeild.label}
             />
           </div>
         ))}
         <div>
-          <button className="family-btn">Add Details</button>
+          <button className='family-btn'>Add Details</button>
         </div>
       </form>
-      <div className="data-container">
-        <ul className="data-header-container">
-          {educationFields.map((eachFeild, index) => (
-            <li className="data-details-header" key={nanoid()}>
-              {eachFeild.label}
-            </li>
-          ))}
-        </ul>
 
-        {docsData.map((eachItem, index) => (
-          <ul key={nanoid()} className="data-content">
+      <table className='data-container'>
+        <thead>
+          <tr>
             {educationFields.map((eachFeild, index) => (
-              <li className="data-details-header" key={index}>
-                {eachItem[eachFeild.name]}
-              </li>
+              <th key={nanoid()} className='table-header'>
+                {eachFeild.label}
+              </th>
             ))}
-          </ul>
-        ))}
-      </div>
+          </tr>
+        </thead>
+        <tbody>
+          {docsData.map((eachItem) => (
+            <tr key={nanoid()}>
+              {educationFields.map((eachFeild, index) => (
+                <td key={index} className='table-data'>
+                  {eachItem[eachFeild.name]}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

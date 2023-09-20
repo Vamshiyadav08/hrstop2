@@ -14,7 +14,7 @@ import { BiHistory, BiEdit } from "react-icons/bi";
 import { AttendenceContext } from "../../../Context";
 import "../Topbar/topbar.css";
 import "./sidebar.css";
-import TopbarProfileMenu from "../../TopbarProfileMenu";
+import TopbarProfileMenu from "../TopbarProfileMenu";
 
 const navItems = [
   { id: "dashboard", label: "DashBoard", icon: <AiFillDashboard /> },
@@ -45,36 +45,35 @@ export default function SideBar() {
     console.log("clicked");
     setActiveTab(clickedElement);
   };
-  console.log(hamburgerData,"data")
+  console.log(hamburgerData, "data");
   return (
     <aside className='sidebar-container'>
+      {hamburgerData && <TopbarProfileMenu className='sidebar-profile-menu' />}
       <nav className='sidebar-nav'>
-        {
-          hamburgerData===true?<TopbarProfileMenu className="topbar-menu"/>:""
-        }
         <ul>
-          {navItems.map((eachItem) => (
-            <li
-              key={eachItem.id}
-              className={`${"sidebar-nav-list"} ${
-                activeTab === eachItem.id ? "sidebar-active-tab" : ""
-              }`}
+          {navItems.map((eachItem, index) => (
+            <Link
+              key={index}
+              to={
+                eachItem.id === "dashboard"
+                  ? "/"
+                  : eachItem.id === "home"
+                  ? "home/profile"
+                  : eachItem.id
+              }
+              className='sidebar-nav-link'
+              onClick={() => handleBtn(eachItem.id)}
             >
-              <Link
-                to={
-                  eachItem.id === "dashboard"
-                    ? "/"
-                    : eachItem.id === "home"
-                    ? "home/profile"
-                    : eachItem.id
-                }
-                className='sidebar-nav-link'
-                onClick={() => handleBtn(eachItem.id)}
+              <li
+                key={`list${index}`}
+                className={`sidebar-nav-list ${
+                  activeTab === eachItem.id ? "sidebar-active-tab" : ""
+                }`}
               >
                 <span className='sidebar-nav-icon'>{eachItem.icon}</span>
                 {eachItem.label}
-              </Link>
-            </li>
+              </li>
+            </Link>
           ))}
         </ul>
       </nav>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../../firebaseConfig";
 import { AttendenceContext } from "../../../../Context";
@@ -6,14 +6,6 @@ import { AttendenceContext } from "../../../../Context";
 import "./profile.css";
 export default function Profile() {
   const [data, setData] = useState({});
-  // const [themeval,setthemestate]= useState(localStorage.getItem("themeVal"))
-  // const {theme} = useContext(AttendenceContext)
-  
-  // useEffect(()=>{
-  //   let themee = localStorage.getItem("themeVal")
-  //   setthemestate(themee)
-  // },[theme])
-
   useEffect(() => {
     const getDataFromFirebase = async () => {
       try {
@@ -31,41 +23,37 @@ export default function Profile() {
   }, []);
 
   return (
-    <div className="profile">
-      <div className="profile-header"></div>
-      <div className="profile-details-container">
-        <div className="profile-image-section">
+    <div className='profile'>
+      <div className='profile-header'></div>
+      <div className='profile-details-container'>
+        <div className='profile-image-section'>
           <img
-            alt="profile"
-            className="profile-image"
-            src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png"
+            alt='profile'
+            className='profile-image'
+            src='https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png'
           />
           <h3>{`${data.firstname} ${data.lastname}`}</h3>
-          <h5>
-            {data.role}
-            <span>IT</span>
-          </h5>
+          <h4>{data.role}</h4>
         </div>
-        <div className="profile-details">
+        <div>
           <h3>PersonalDetails</h3>
-          <div>
-            {data && (
-              <>
-                <label className="profile-label">Name</label>
-                <p>{data.firstname}</p>
-                <label className="profile-label">Email</label>
-                <p>{data.personalemail}</p>
-                <label className="profile-label">Phone</label>
-                <p>{data.mobile}</p>
-                <label className="profile-label">Address</label>
-                <p>{data.adress}</p>
-                <label className="profile-label">Date OF Birth</label>
-                <p>{data.date}</p>
-                <label className="profile-label">Linkedin</label>
-                <p>{data.linkedin}</p>
-              </>
-            )}
-          </div>
+
+          {data && (
+            <div className='profile-details'>
+              <label className='profile-label'>Name</label>
+              <p>{data.firstname}</p>
+              <label className='profile-label'>Email</label>
+              <p>{data.personalemail}</p>
+              <label className='profile-label'>Phone</label>
+              <p>{data.mobile}</p>
+              <label className='profile-label'>Address</label>
+              <p>{data.adress}</p>
+              <label className='profile-label'>Date OF Birth</label>
+              <p>{data.date}</p>
+              <label className='profile-label'>Linkedin</label>
+              <p>{data.linkedin}</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -21,8 +21,7 @@ export default function Skills() {
   };
 
   const handleDelete = (uniqueid) => {
-    // console.log(uniqueid)
-    if (dataArray.length > 1) {      
+    if (dataArray.length > 1) {
       let updatedArr = dataArray.filter((eachele) => {
         return eachele.id !== uniqueid;
       });
@@ -31,12 +30,10 @@ export default function Skills() {
   };
   function saveInput(index) {
     const updatedArr = [...dataArray];
-    updatedArr[index].text = inputstate;    
-    if(updatedArr.length - 1 === index)
-     updatedArr.push({ id: nanoid(), text: "", rating: 0 })
+    updatedArr[index].text = inputstate;
+    if (updatedArr.length - 1 === index)
+      updatedArr.push({ id: nanoid(), text: "", rating: 0 });
     setdataArray(updatedArr);
-
-    
   }
   const handleStar = (index, starIndex) => {
     console.log(index, starIndex);
@@ -47,34 +44,34 @@ export default function Skills() {
   };
 
   return (
-    <div className="skills">
+    <div className='skills'>
       <h3>Skills</h3>
       {dataArray.map((eachEle, index) => {
         const uniqueid = eachEle.id;
         return (
-          <div className="skills-section" key={uniqueid}>
+          <div className='skills-section' key={uniqueid}>
             <input
-              type="text"
+              type='text'
               className={`skills-input ${isFocused ? "skills-focused" : ""}`}
-              placeholder="empty"
+              placeholder='empty'
               onChange={handleChange}
               onFocus={() => SetIsFocused(true)}
               onBlur={() => SetIsFocused(false)}
             />
-            <div className="skills-star-section">
+            <div className='skills-star-section'>
               {[0, 1, 2, 3].map((starIndex) => {
                 const currentRating = starIndex + 1;
                 return (
                   <label key={`${uniqueid}th-index-${starIndex}th-star`}>
                     <input
-                      type="radio"
-                      name="rating"
+                      type='radio'
+                      name='rating'
                       value={currentRating}
                       onClick={() => handleStar(index, currentRating)}
                     />
                     {
                       <AiFillStar
-                        className="skills-star"
+                        className='skills-star'
                         color={
                           currentRating <= dataArray[index].rating
                             ? "#005580"
@@ -88,14 +85,14 @@ export default function Skills() {
             </div>
             <span>
               <RiDeleteBin5Line
-                className="skills-delete-icon"
+                className='skills-delete-icon'
                 onClick={() => handleDelete(uniqueid)}
               />
             </span>
             {isFocused && (
-              <div className="save-btn">
+              <div className='save-btn'>
                 <button
-                  className="right-btn"
+                  className='right-btn'
                   onMouseDown={() => saveInput(index)}
                 >
                   &#10004;{" "}

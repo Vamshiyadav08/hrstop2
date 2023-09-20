@@ -27,21 +27,19 @@ export default function Attendence() {
   });
 
   return (
-    <div className="attendence-container">
-      <div className="attendence-header">
-        <h3>
-          Attendence
-          {/* <span>
-            <MdArrowRight /> 
-          </span> */}
-        </h3>
-        <div className="attendenece-btn">
-          <button className="attendence-req-btn">Request Attendence</button>
-          <button className="attendence-exp-btn">Export</button>
+    <div className='attendence-container'>
+      <div className='attendence-header'>
+        <h3>Attendence</h3>
+        <span>
+          <MdArrowRight />
+        </span>
+        <div className='attendenece-btn'>
+          <button className='attendence-req-btn'>Request Attendence</button>
+          <button className='attendence-exp-btn'>Export</button>
         </div>
       </div>
       <div>
-        <p className="attendence-para">
+        <p className='attendence-para'>
           Justify the attendance on Late, Early Left and Short Total Time for a
           day. You can justify your Late by clicking the Justify option under
           the first punch. You can justify your Early Left by clicking the
@@ -49,7 +47,7 @@ export default function Attendence() {
           Time by clicking the Justify option under the Total time. You can also
           request for your missed punch by clicking the Request Punch option.
         </p>
-        <div className="attendence-navigators">
+        <div className='attendence-navigators'>
           <BiSolidLeftArrow onClick={previousweek} />
           <span>{`${addDays(
             changeToFirstDayOFWeek,
@@ -61,19 +59,19 @@ export default function Attendence() {
           <BiSolidRightArrow onClick={nextWeek} />
         </div>
       </div>
-      <div className="attendence-calender">
+      <div className='attendence-calender'>
         <div>
-          <div className="attendence-calender-header">
+          <div className='attendence-calender-header'>
             <p>Date</p>
             <p>Hours</p>
             <p>Total</p>
           </div>
         </div>
         <div>
-          <div className="attendence-dates">
-            <ul className="attendence-list-container">
+          <div className='attendence-dates'>
+            <ul className='attendence-list-container'>
               {weekDays.map((eachDay, index) => (
-                <li key={nanoid()} className="attendence-list" id={index}>
+                <li key={nanoid()} className='attendence-list' id={index}>
                   <p>
                     {eachDay.toLocaleDateString("en-US", {
                       year: "numeric",
@@ -82,15 +80,13 @@ export default function Attendence() {
                       weekday: "short",
                     })}
                   </p>
-                  <progress
-                    value="100"
-                    max="100"
-                    className={`progress-bar${
+                  <div
+                    className={` ${
                       eachDay.toDateString() === date.toDateString()
-                        ? "attendece-progress-bar"
-                        : ""
+                        ? "attendence-progress-bar"
+                        : "progress-bar"
                     }`}
-                  ></progress>
+                  ></div>
                   <p>9:20</p>
                 </li>
               ))}

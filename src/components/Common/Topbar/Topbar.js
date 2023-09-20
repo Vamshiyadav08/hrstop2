@@ -1,34 +1,26 @@
 import React, { useState, useContext, useEffect } from "react";
-import { json, useNavigate } from "react-router-dom";
 import { db } from "../../../firebaseConfig";
-import { getDoc, getDocs, doc, collection } from "firebase/firestore";
-
+import { getDocs, collection } from "firebase/firestore";
 import "./topbar.css";
 import { AiOutlineSearch } from "react-icons/ai";
-import { BiSolidDownArrow } from "react-icons/bi";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { AttendenceContext } from "../../../Context";
-import { getAuth, signOut } from "firebase/auth";
-import "react-toggle/style.css";
-import Toggle from "react-toggle";
-import {AiOutlineMenu} from "react-icons/ai"
-import "@szhsin/react-menu/dist/index.css";
-import "@szhsin/react-menu/dist/transitions/slide.css";
-import TopbarProfileMenu from "../../TopbarProfileMenu";
-
-const auth = getAuth();
+import Switch from "@mui/material/Switch";
+import TopbarProfileMenu from "../TopbarProfileMenu";
+import { useNavigate } from "react-router-dom";
 
 export default function Topbar() {
-  //changing the classname using setisfocused to perform styles
   const [isFocused, setIsFocused] = useState(false);
   const [CheckIn, setCheckIn] = useState(false);
-  const [showDropdown, setdropdown] = useState(false);
   const [hamburgerbtn, sethamburgerBtn] = useState(false);
-  const [data, setData] = useState({});
 
-  const [theme, setthemeState] = useState(localStorage.getItem("themeVal"));
+  const [theme, setthemeState] = useState(
+    localStorage.getItem("themeVal") !== null
+      ? localStorage.getItem("themeVal")
+      : false
+  );
 
   const contextData = useContext(AttendenceContext);
+
   useEffect(() => {
     const setTheme = () => {
       localStorage.setItem("themeVal", theme);
@@ -37,9 +29,11 @@ export default function Topbar() {
   }, [theme]);
 
   const handletheme = (event) => {
+    console.log(event.target.checked, "event");
     contextData.themeContext(event.target.checked);
     setthemeState(event.target.checked);
   };
+  console.log(theme, "theme");
 
   const [time, setTime] = useState("");
   const handlehamburger = () => {
@@ -50,7 +44,6 @@ export default function Topbar() {
   const handleTimeIn = () => {
     const now = new Date();
     let checked = !CheckIn;
-
     const time = now.toLocaleString("en-US", {
       hour: "numeric",
       minute: "numeric",
@@ -67,16 +60,13 @@ export default function Topbar() {
     setCheckIn(checked);
   };
 
-  
   const getData = async (searchedValue) => {
     const querySnapshot = await getDocs(collection(db, "companyusers"));
     const data = [];
     querySnapshot.forEach((doc) => {
       data.push({ id: doc.id, ...doc.data() });
     });
-
     contextData.searchUserData(data, searchedValue);
-    console.log(data, "dataa");
   };
 
   const handleInput = (event) => {
@@ -84,29 +74,20 @@ export default function Topbar() {
       getData(event.target.value);
     }
   };
-  useEffect(() => {
-    const getDataFromFirebase = async () => {
-      try {
-        const docRef = doc(db, "userDetails", "id1");
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          let dbData = docSnap.data();
-          setData(dbData);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getDataFromFirebase();
-  }, []);
+
+  const navigate = useNavigate();
+  const navigateToProfile = () => {
+    navigate("./home/profile");
+  };
+
   return (
     <header className='header'>
       <div className='header-logo'>
         <img
           className='topbar-logo'
           src={require("../../../assests/images/hrstop.png")}
-          // alt='actualize'
-          // onClick={navigateToProfile}
+          alt='actualize'
+          onClick={navigateToProfile}
         />
       </div>
       <div className='topbar-container'>
@@ -138,41 +119,16 @@ export default function Topbar() {
         </div>
         <div>
           <label>
-            <Toggle icons={false} onChange={handletheme} />
+            <Switch
+              checked={theme === true ? true : false}
+              onChange={handletheme}
+              inputProps={{ "aria-label": "controlled" }}
+            />
           </label>
         </div>
-        <TopbarProfileMenu/>
-        {/* <div className='profile-topbar-container'>
-          <div>
-            <img
-              alt='profile'
-              className='profile-topbar-image'
-              src='https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png'
-            />
-            <div className='profile-topbar-details'>
-              <h4>vamshi Thotakuri</h4>
-              <span>Associate Share Point Dev</span>
-            </div>
-            <div className='arrow-icon'>
-              <BiSolidDownArrow
-                className={`arrow ${showDropdown ? "up" : "down"}`}
-                onClick={handledropdown}
-              />
-            </div>
-          </div>
-          {showDropdown && (
-            <div className='dropdown'>
-              <div className='dropdown-item' onClick={navigateToProfile}>
-                Profile
-              </div>
-              <div className='dropdown-item' onClick={handleLogout}>
-                Logout
-              </div>
-            </div>
-          )}
-        </div> */}
+        <TopbarProfileMenu className='topbar-profile-menu' />
         <button className='hamburger-btn' onClick={handlehamburger}>
-          <AiOutlineMenu/>
+          &#8801;
         </button>
       </div>
     </header>

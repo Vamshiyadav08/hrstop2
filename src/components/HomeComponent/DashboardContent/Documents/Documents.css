@@ -1,5 +1,6 @@
 .doc-form-container{
     display: flex;
+    flex-direction: row;
     gap: 2rem;
 }
 .document-header{
@@ -19,4 +20,19 @@
     border: none;
     padding: .2rem;
     border-radius: .3rem;
+}
+@media  (max-width:789px){
+
+    .documents-input{
+        min-width: 50%;
+        margin-bottom: 1em;
+    }
+    .doc-form-container{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .document-btn{
+        width: 40%;
+    }
 }

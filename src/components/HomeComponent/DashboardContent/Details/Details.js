@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import "./details.css";
 import { db } from "../../../../firebaseConfig";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
-import { AttendenceContext } from "../../../../Context";
 
 const personalDetailsFields = [
   {
@@ -14,32 +13,11 @@ const personalDetailsFields = [
     type: "select",
     options: ["Mr", "Miss", "Dr"],
   },
-  {
-    name: "firstname",
-    label: "First Name",
-    type: "text",
-    required: true,
-  },
-  {
-    name: "middlename",
-    label: "Middle Name",
-    type: "text",
-  },
-  {
-    name: "lastname",
-    label: "Last Name",
-    type: "text",
-  },
-  {
-    name: "date",
-    label: "Date of Birth",
-    type: "date",
-  },
-  {
-    name: "role",
-    label: "Role",
-    type: "text",
-  },
+  { name: "firstname", label: "First Name", type: "text", required: true },
+  { name: "middlename", label: "Middle Name", type: "text" },
+  { name: "lastname", label: "Last Name", type: "text" },
+  { name: "date", label: "Date of Birth", type: "date" },
+  { name: "role", label: "Role", type: "text" },
   {
     name: "gender",
     label: "Gender",
@@ -67,31 +45,16 @@ const personalDetailsFields = [
 ];
 
 const contactDetailsFields = [
-  {
-    name: "mobile",
-    label: "Mobile",
-    required: true,
-  },
-  {
-    name: "workphone",
-    label: "Work Phone",
-  },
+  { name: "mobile", label: "Mobile", required: true },
+  { name: "workphone", label: "Work Phone" },
   {
     name: "personalemail",
     label: "Personal Email",
     type: "text",
     required: true,
   },
-  {
-    name: "linkedin",
-    label: "LinkedIn",
-    type: "text",
-  },
-  {
-    name: "adress",
-    label: "Permanent Address",
-    type: "text",
-  },
+  { name: "linkedin", label: "LinkedIn", type: "text" },
+  { name: "adress", label: "Permanent Address", type: "text" },
 ];
 
 export default function Details() {
@@ -111,14 +74,6 @@ export default function Details() {
     adress: "",
     role: "",
   });
-
-  // const [themeval, setthemestate] = useState(localStorage.getItem("themeVal"));
-  // const { theme } = useContext(AttendenceContext);
-
-  // useEffect(() => {
-  //   let themee = localStorage.getItem("themeVal");
-  //   setthemestate(themee);
-  // }, [theme]);
 
   const handleChangeEvent = (event, val) => {
     console.log(val);
@@ -172,7 +127,7 @@ export default function Details() {
           id={eachFeild.name}
           name={eachFeild.name}
           onChange={handleChangeEvent}
-          className="form-input"
+          className='form-input'
         >
           {eachFeild.options.map((option) => (
             <option value={option} key={option}>
@@ -184,20 +139,21 @@ export default function Details() {
     } else if (eachFeild.type === "textarea") {
       return (
         <textarea
-          rows="5"
-          cols="20"
+          rows='5'
+          cols='20'
           name={eachFeild.name}
           onChange={handleChangeEvent}
-          className="form-input"
+          className='form-input'
           value={data[eachFeild.name]}
         />
       );
     } else if (eachFeild.name === "mobile" || eachFeild.name === "workphone") {
       return (
-        <div className="form-input">
+        <div className='form-input'>
           <PhoneInput
             inputProps={{ name: eachFeild.name }}
             country={"us"}
+            className='form-input'
             name={eachFeild.name}
             value={data[eachFeild.name]}
             onChange={(value) =>
@@ -216,9 +172,9 @@ export default function Details() {
         <input
           name={eachFeild.name}
           id={eachFeild.name}
-          type="text"
+          type='text'
           onChange={handleChangeEvent}
-          className="form-input"
+          className='form-input'
           value={data?.[eachFeild.name]}
         />
       );
@@ -227,9 +183,9 @@ export default function Details() {
         <input
           name={eachFeild.name}
           id={eachFeild.name}
-          type="date"
+          type='date'
           onChange={handleChangeEvent}
-          className="form-input"
+          className='form-input'
           value={data?.[eachFeild.name]}
         />
       );
@@ -237,46 +193,37 @@ export default function Details() {
   };
 
   return (
-    <div className="details-container">
+    <div className='details-container'>
       <form onSubmit={handleSubmit}>
-        <div className="personal-details">
-          <h4 className="details-heading">Personal Details</h4>
+        <div className='personal-details'>
+          <h3 className='details-heading'>Personal Details</h3>
           {personalDetailsFields.map((eachFeild) => (
-            <div className="input-container" key={eachFeild.name}>
-              <label
-                className= "details-label"
-                htmlFor="middleName"
-              >
+            <div className='input-container' key={eachFeild.name}>
+              <label className='details-label' htmlFor='middleName'>
                 {eachFeild.label}
                 {eachFeild.required && (
-                  <span className="star-important">*</span>
+                  <span className='star-important'>*</span>
                 )}
               </label>
               {renderInputFeild(eachFeild)}
             </div>
           ))}
         </div>
-        <div className="contact-details">
-          <h4 className="details-heading">Contact Details</h4>
+        <div className='contact-details'>
+          <h4 className='details-heading'>Contact Details</h4>
           {contactDetailsFields.map((eachFeild) => (
-            <div className="input-container" key={eachFeild.name}>
-              <label
-                className="details-label"
-              >
+            <div className='input-container' key={eachFeild.name}>
+              <label className='details-label'>
                 {eachFeild.label}
                 {eachFeild.required && (
-                  <span className="star-important">*</span>
+                  <span className='star-important'>*</span>
                 )}
               </label>
               {renderInputFeild(eachFeild)}
             </div>
           ))}
         </div>
-        {data.length < 1 ? (
-          <button className="details-btn">Save</button>
-        ) : (
-          <button className="details-btn">Update</button>
-        )}
+        <button className='details-btn'>Update</button>
       </form>
     </div>
   );

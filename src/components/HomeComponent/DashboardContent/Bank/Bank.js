@@ -5,10 +5,9 @@ import "../Education/education.css";
 import { db } from "../../../../firebaseConfig";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
-import { AttendenceContext } from "../../../../Context";
 import { nanoid } from "nanoid";
 
-const formFields = [
+const bankFields = [
   { name: "bankname", label: "Name of Bank", required: true },
   { name: "accno", label: "Account No", required: true },
   { name: "ifsc", label: "IFSC Code" },
@@ -16,7 +15,7 @@ const formFields = [
   { name: "acctype", label: "Account Type" },
   { name: "paymentmode", label: "Payment Mode" },
 ];
-const dataHeaders = [
+const bankHeaders = [
   "Name of Bank",
   "Account No",
   "IFSC No",
@@ -35,14 +34,6 @@ export default function Bank() {
     paymentmode: "",
   });
   const [docsData, setDocsData] = useState({});
-
-  // const [themeval, setthemestate] = useState(localStorage.getItem("themeVal"));
-  // const { theme } = useContext(AttendenceContext);
-
-  // useEffect(() => {
-  //   let themee = localStorage.getItem("themeVal");
-  //   setthemestate(themee);
-  // }, [theme]);
 
   const handleInput = (event) => {
     console.log(event.target.value);
@@ -86,45 +77,45 @@ export default function Bank() {
     <div>
       <h3>Bank Account Details</h3>
       <form onSubmit={handlesubmit}>
-        {formFields.map((eachEle) => (
-          <div className="bank-input-container" key={eachEle.name}>
-            <label
-              className= "bank-label"
-            >
+        {bankFields.map((eachEle) => (
+          <div className='bank-input-container' key={eachEle.name}>
+            <label className='bank-label'>
               {eachEle.label}
-              {eachEle.required && <span className="valid-check">*</span>}
+              {eachEle.required && <span className='valid-check'>*</span>}
             </label>
             <input
-              type="text"
+              type='text'
               name={eachEle.name}
-              className="bank-input"
+              className='bank-input'
               onChange={handleInput}
               placeholder={eachEle.label}
             />
           </div>
         ))}
-        <button className="bank-btn">
+        <button className='bank-btn'>
           <BiEdit />
           Update Details
         </button>
       </form>
-      <div className="data-container">
-        <ul className="data-header-container">
-          {dataHeaders.map((eachEle) => (
-            <li className="data-details-header" key={nanoid()}>
-              {eachEle}
-            </li>
-          ))}
-        </ul>
 
-        <ul className="data-content">
-          {formFields.map((eachItem, index) => (
-            <li className="data-details" key={index}>
-              {docsData[eachItem.name]}
-            </li>
+      <table className='data-container'>
+        <tr>
+          {bankFields.map((eachFeild, index) => (
+            <th key={nanoid()} className='table-header'>
+              {eachFeild.label}
+            </th>
           ))}
-        </ul>
-      </div>
+        </tr>
+        {
+          <tr>
+            {bankFields.map((eachFeild) => (
+              <td key={nanoid()} className='table-data'>
+                {docsData[eachFeild.name]}
+              </td>
+            ))}
+          </tr>
+        }
+      </table>
     </div>
   );
 }

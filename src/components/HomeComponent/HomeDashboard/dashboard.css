@@ -11,7 +11,7 @@
     
 }
 .home-nav-list.active-tab{
-    background-color: var(--nav-bg-clr);
+    background-color: var(--bg-clr);
     border-left:2px solid #5999D0;
 }
 

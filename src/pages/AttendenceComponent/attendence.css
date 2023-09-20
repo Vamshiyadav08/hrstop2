@@ -1,6 +1,3 @@
-/* .attendence-container{
-    width: 80vw;
-} */
 .attendence-container{
     margin: 1rem;
 }
@@ -14,6 +11,10 @@
  color: #2679b5;
  font-size: 1.3rem;
 
+}
+.attendence-header>h3{
+    display: flex;
+    align-items: center;
 }
 .attendence-para{
     padding: 1rem 0;
@@ -41,26 +42,36 @@
 }
 .attendence-calender-header{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    color: var(--attendence-calender-header-bg-clr); 
+    grid-template-columns: 1fr 2fr 1fr;
+    color: var(---data-details-header-clr);
+    gap: 3rem;
+    padding: 0.5rem;
 }
 .attendence-list{
+    gap: 3rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     list-style-type: none;
     color: var(--text-clr);
-    padding: .5rem;
+    padding: 1rem;
     border-bottom: 1px solid #ecedf1;
 }
 .attendence-navigators{
     color: #2679b5;
     margin-bottom: .5rem;
 }
-.attendece-progress-bar{
- accent-color: #87B87F;
- border:none;
+.attendence-progress-bar{
+ background-color: #87B87F;
+ height: 8px;
+ border-radius:8px;
 }
 .progress-bar{
-    accent-color: #E6E8ED;
-    
+    background-color: #E6E8ED;
+    height: 8px;
+    /* border: 1px solid #E6E8ED; */
+    border-radius: 8px;
+}
+.attendence-list-container li:nth-child(6) div,
+.attendence-list-container li:nth-child(7) div {
+  background-color: #9585BF !important;
 }

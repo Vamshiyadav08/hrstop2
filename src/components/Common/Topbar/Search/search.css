@@ -35,3 +35,6 @@
 .search-name-header{
     border-bottom: 1px dotted #e6e8ed;
 }
+label.search-profile-label {
+    font-weight: 700;
+}

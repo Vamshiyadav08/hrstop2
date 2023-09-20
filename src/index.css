@@ -8,10 +8,14 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+ 
+  
   
 }
 body{
-  overflow: hidden;                                                                                                                                         
+  overflow: hidden;  
+  font-size: 0.8rem;    
+                                                                                                                                  
 }
 .light-theme{
   --bg-clr:#fff;
@@ -42,20 +46,12 @@ body{
 h3{
   color: #2679b5;
   font-weight: 700;
+  margin-bottom: 1em;
 }
-
-.hamburger-btn{
-  display: none;
-}
-
-
-
-@media (max-width:759px)
-{
-  .profile-topbar-container{
-    display: none;
+@media (max-width:759px) {
+  body{
+    font-size: 0.7rem;
   }
-  .hamburger-btn{
-    display: inline-block;
-  }
+  
 }
+
