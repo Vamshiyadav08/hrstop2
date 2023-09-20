@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { AiFillDashboard, AiFillCreditCard, AiFillHome } from "react-icons/ai";
 import { BsFillAlarmFill, BsHourglassSplit, BsCash } from "react-icons/bs";
 import {
@@ -37,8 +37,6 @@ const navItems = [
 
 export default function SideBar() {
   const [activeTab, setActiveTab] = useState(null);
-
-  const [themeval, setthemestate] = useState(localStorage.getItem("themeVal"));
   const { hamburgerData } = useContext(AttendenceContext);
 
   const handleBtn = (clickedElement) => {

@@ -19,7 +19,7 @@ body{
 }
 .light-theme{
   --bg-clr:#fff;
-  --text-color:"#fff";
+  --text-clr:#333;
   --main-heading:#2679b5;
   --para-clr:#393939;
   --nav-bg-clr : #f8f8f8;
@@ -28,7 +28,8 @@ body{
   --data-details-header-clr:#393939;
   --data-details-clr:#393939;
   --attendence-calender-header-bg-clr:#F7FAFD;
-  --sidebar-bg-clr:#f8f8f8
+  --sidebar-bg-clr:#f8f8f8;
+  --profile-input-bg-clr:#F3F9FC;
 }
 .dark-theme{
   --bg-clr:#393939;
@@ -38,15 +39,19 @@ body{
   --nav-bg-clr : #393939;
   --nav-text-clr : #fff;
   --label-clr : #fff;
-  --data-details-header-clr:#2679b5;
+  --data-details-header-clr:#fff;
   --data-details-clr:#393939;
   --attendence-calender-header-bg-clr:#F7FAFD;
   --sidebar-bg-clr:#202123;
+  --profile-input-bg-clr:#393939;
 }
 h3{
   color: #2679b5;
   font-weight: 700;
   margin-bottom: 1em;
+}
+.valid-check{
+  color: red;
 }
 @media (max-width:759px) {
   body{

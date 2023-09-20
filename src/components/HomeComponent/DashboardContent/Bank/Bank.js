@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { BiEdit } from "react-icons/bi";
 import "./Bank.css";
 import "../Education/education.css";
@@ -14,14 +14,6 @@ const bankFields = [
   { name: "branch", label: "Branch Address" },
   { name: "acctype", label: "Account Type" },
   { name: "paymentmode", label: "Payment Mode" },
-];
-const bankHeaders = [
-  "Name of Bank",
-  "Account No",
-  "IFSC No",
-  "Branch Address",
-  "Account Type",
-  "Payment Mode",
 ];
 
 export default function Bank() {
@@ -99,22 +91,26 @@ export default function Bank() {
       </form>
 
       <table className='data-container'>
-        <tr>
-          {bankFields.map((eachFeild, index) => (
-            <th key={nanoid()} className='table-header'>
-              {eachFeild.label}
-            </th>
-          ))}
-        </tr>
-        {
+        <thead>
           <tr>
-            {bankFields.map((eachFeild) => (
-              <td key={nanoid()} className='table-data'>
-                {docsData[eachFeild.name]}
-              </td>
+            {bankFields.map((eachFeild, index) => (
+              <th key={nanoid()} className='table-header'>
+                {eachFeild.label}
+              </th>
             ))}
           </tr>
-        }
+        </thead>
+        <tbody>
+          {
+            <tr>
+              {bankFields.map((eachFeild) => (
+                <td key={nanoid()} className='table-data'>
+                  {docsData[eachFeild.name]}
+                </td>
+              ))}
+            </tr>
+          }
+        </tbody>
       </table>
     </div>
   );

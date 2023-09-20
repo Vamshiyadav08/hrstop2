@@ -43,7 +43,8 @@
 .attendence-calender-header{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    color: var(---data-details-header-clr);
+    color: var( --data-details-header-clr);
+    font-weight: 600;
     gap: 3rem;
     padding: 0.5rem;
 }
@@ -59,6 +60,7 @@
 .attendence-navigators{
     color: #2679b5;
     margin-bottom: .5rem;
+    font-weight: 600;
 }
 .attendence-progress-bar{
  background-color: #87B87F;
@@ -68,7 +70,6 @@
 .progress-bar{
     background-color: #E6E8ED;
     height: 8px;
-    /* border: 1px solid #E6E8ED; */
     border-radius: 8px;
 }
 .attendence-list-container li:nth-child(6) div,

@@ -34,7 +34,7 @@
     font-weight: 700;
 }
 .profile-details p:nth-of-type(2n+1),.profile-details label:nth-of-type(2n+1)  {
-    background-color: #F3F9FC;
+    background-color: var(--profile-input-bg-clr);
 
 }
 

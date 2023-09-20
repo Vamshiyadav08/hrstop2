@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, {  useState } from "react";
 import "./dashboard.css";
 import { Link } from "react-router-dom";
-import { AttendenceContext } from "../../../Context";
+
 
 const navItems = [
   { id: "profile", label: "Profile" },

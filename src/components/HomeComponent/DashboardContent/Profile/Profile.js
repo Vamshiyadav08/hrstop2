@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../../firebaseConfig";
-import { AttendenceContext } from "../../../../Context";
+
 
 import "./profile.css";
 export default function Profile() {

@@ -16,11 +16,10 @@ import Family from "./components/HomeComponent/DashboardContent/Family/Family";
 import OrganizationChart from "./pages/OrganizationChart/OrganizationChart";
 import HomeLayout from "./Layout/HomeLayout/HomeLayout";
 import Bank from "./components/HomeComponent/DashboardContent/Bank/Bank";
-import Admin from "./pages/Admin/Admin";
 import PageNotFound from "./components/Common/PageNotFound";
 import Search from "./components/Common/Topbar/Search/Search";
 import MyCalender from "./pages/Calender/Calender";
-import { AttendenceContext } from "./Context";
+import { AttendenceContext, AttendenceProvider } from "./Context";
 
 function App() {
   const [themeval, setthemestate] = useState(localStorage.getItem("themeVal"));
@@ -53,11 +52,11 @@ function App() {
             path='/organizationchart'
             element={<OrganizationChart />}
           ></Route>
-          <Route path='/admin' element={<Admin />}></Route>
           <Route path='/search' element={<Search />} />
           <Route path='*' element={<PageNotFound />} />
         </Route>
       </Routes>
+
       {/* </AttendenceProvider> */}
       <ToastContainer />
     </div>

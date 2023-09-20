@@ -57,6 +57,8 @@
     position: absolute;
     font-weight: 400;
     top: 100%;
+    color: var(--text-clr);
+    background-color: var(--bg-clr);
   }
   .sidebar-list {
     margin-top: 0;

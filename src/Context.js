@@ -29,12 +29,6 @@ const AttendenceProvider = ({ children }) => {
   const themeContext = (themestate) => {
     setTheme(themestate);
   };
-  // console.log(theme)
-
-  // const cacheMemoData = useMemo(
-  //   () => (),
-  //   [time, hamburgerData, searchData,theme]
-  // );
 
   return (
     <AttendenceContext.Provider

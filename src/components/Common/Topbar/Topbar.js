@@ -120,7 +120,7 @@ export default function Topbar() {
         <div>
           <label>
             <Switch
-              checked={theme === true ? true : false}
+              // checked={theme === true ? true : false}
               onChange={handletheme}
               inputProps={{ "aria-label": "controlled" }}
             />

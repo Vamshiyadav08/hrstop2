@@ -8,7 +8,6 @@ import enUS from "date-fns/locale/en-US";
 import CalenderEventData from "./CalenderEventData";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { calculateNewValue } from "@testing-library/user-event/dist/utils";
 
 const locales = {
   "en-US": enUS,
