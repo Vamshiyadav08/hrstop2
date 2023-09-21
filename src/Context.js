@@ -14,14 +14,16 @@ const AttendenceProvider = ({ children }) => {
     setTime(timeDetails);
   };
   const searchUserData = (userData, searchInput) => {
+    // console.log(userData, "vamshi");
     const lowercaseSearchInput = searchInput.toLowerCase();
-    let searchedObj = userData.find((eachItem) => {
+    let searchedObj = userData.filter((eachItem) => {
       return eachItem.name.toLowerCase().includes(lowercaseSearchInput);
     });
     setSerachData(searchedObj);
 
     navigate("/search");
   };
+  console.log(searchData);
 
   const hamburgerContext = (btnClick) => {
     setHamburgerData(btnClick);

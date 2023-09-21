@@ -12,7 +12,7 @@
     height: 10em;
     margin-right: 5em;
 }
-.search-details-container>div{
+.search-details{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4em;
@@ -34,7 +34,13 @@
 }
 .search-name-header{
     border-bottom: 1px dotted #e6e8ed;
+    font-weight: 700;
+    font-size: 1.5rem;
 }
 label.search-profile-label {
     font-weight: 700;
+}
+.not-found-image{
+    width: 350px;
+    height: 350px;
 }

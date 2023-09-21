@@ -1,16 +1,15 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import "./dashboard.css";
 import { Link } from "react-router-dom";
-
 
 const navItems = [
   { id: "profile", label: "Profile" },
   { id: "details", label: "Details" },
   { id: "skills", label: "Skills" },
-  { id: "documents", label: "Documents" },
   { id: "education", label: "Educational Details" },
   { id: "bank", label: "Bank" },
   { id: "family", label: "Family" },
+  { id: "documents", label: "Documents" },
 ];
 
 export default function HomeDashBoard() {

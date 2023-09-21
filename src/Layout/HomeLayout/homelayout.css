@@ -18,4 +18,5 @@
   margin: 1rem;
   padding: 1rem;
   width: 64vw;
+  overflow-x: auto;
 }

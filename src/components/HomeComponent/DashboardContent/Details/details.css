@@ -4,12 +4,12 @@
 }
 
 
-.form-input:hover,
+
 .form-input:focus {
   outline: none;
-  border-color: #428bca;
+  border:1px solid  #428bca;
   box-shadow: 0 0 0 1px #428bca;
-  border: none;
+ 
   
 }
 
